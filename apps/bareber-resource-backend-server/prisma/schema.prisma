@@ -7,6 +7,22 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  activo              Boolean?
+  appointmentServices AppointmentServiceItem[]
+  email               String?              @unique
+  fechaRegistro       DateTime?            @map("fecha_registro") @db.Timestamp(6)
+  id                  String               @id @default(cuid()) @db.Uuid
+  nombre              String?
+  passwordHash        String?              @map("password_hash")
+  staffCustomServices StaffCustomService[]
+  telefono            String?
+  userRoles           UserRole[]
+  userStaffTypes      UserStaffType[]
+
+  @@map("users")
+}
+
 model Role {
   descripcion String?
   id          String     @id @default(cuid()) @db.Uuid
@@ -14,22 +30,6 @@ model Role {
   userRoles   UserRole[]
 
   @@map("roles")
-}
-
-model User {
-  activo              Boolean?
-  appointmentServices AppointmentServiceItem[]
-  email               String?                  @unique
-  fechaRegistro       DateTime?                @map("fecha_registro") @db.Timestamp(6)
-  id                  String                   @id @default(cuid()) @db.Uuid
-  nombre              String?
-  passwordHash        String?                  @map("password_hash")
-  staffCustomServices StaffCustomService[]
-  telefono            String?
-  userRoles           UserRole[]
-  userStaffTypes      UserStaffType[]
-
-  @@map("users")
 }
 
 model UserRole {
@@ -45,8 +45,8 @@ model UserRole {
 
 model StaffType {
   descripcion       String?
-  id                String             @id @default(cuid()) @db.Uuid
-  nombre            String?            @unique
+  id                String               @id @default(cuid()) @db.Uuid
+  nombre            String?              @unique
   serviceStaffLinks ServiceStaffLink[]
   userStaffTypes    UserStaffType[]
 
@@ -67,12 +67,12 @@ model ServiceEntity {
   activo              Boolean?
   appointmentServices AppointmentServiceItem[]
   categoria           String?
-  createdAt           DateTime?                @map("created_at") @db.Timestamp(6)
+  createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
   descripcion         String?
-  duracionBaseMinutos Int?                     @map("duracion_base_minutos")
-  id                  String                   @id @default(cuid()) @db.Uuid
+  duracionBaseMinutos Int?                 @map("duracion_base_minutos")
+  id                  String               @id @default(cuid()) @db.Uuid
   nombre              String?
-  precioBase          Decimal?                 @map("precio_base") @db.Decimal(10, 2)
+  precioBase          Decimal?             @map("precio_base") @db.Decimal(10, 2)
   serviceStaffLinks   ServiceStaffLink[]
   staffCustomServices StaffCustomService[]
 
@@ -117,47 +117,47 @@ model Client {
 
 model Appointment {
   appointmentServices AppointmentServiceItem[]
-  client              Client                   @relation(fields: [client_id], references: [id])
+  client              Client               @relation(fields: [client_id], references: [id])
   client_id           String
-  createdAt           DateTime?                @map("created_at") @db.Timestamp(6)
+  createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
   estado              String?
-  fechaFin            DateTime?                @map("fecha_fin") @db.Timestamp(6)
-  fechaInicio         DateTime?                @map("fecha_inicio") @db.Timestamp(6)
-  id                  String                   @id @default(cuid()) @db.Uuid
+  fechaFin            DateTime?            @map("fecha_fin") @db.Timestamp(6)
+  fechaInicio         DateTime?            @map("fecha_inicio") @db.Timestamp(6)
+  id                  String               @id @default(cuid()) @db.Uuid
   notas               String?
   notifications       Notification[]
   payments            Payment[]
-  updatedAt           DateTime?                @map("updated_at") @db.Timestamp(6)
+  updatedAt           DateTime?            @map("updated_at") @db.Timestamp(6)
 
   @@map("appointments")
 }
 
 model AppointmentServiceItem {
-  appointment          Appointment   @relation(fields: [appointment_id], references: [id])
-  appointment_id       String
-  duracionFinalMinutos Int?          @map("duracion_final_minutos")
-  estado               String?
-  fechaAgregado        DateTime?     @map("fecha_agregado") @db.Timestamp(6)
-  id                   String        @id @default(cuid()) @db.Uuid
-  notas                String?
-  precioFinal          Decimal?      @map("precio_final") @db.Decimal(10, 2)
-  serviceEntity        ServiceEntity @relation(fields: [service_id], references: [id])
-  service_id           String
-  user                 User?         @relation(fields: [staff_id], references: [id])
-  staff_id             String?
+  appointment         Appointment   @relation(fields: [appointment_id], references: [id])
+  appointment_id      String
+  duracionFinalMinutos Int?         @map("duracion_final_minutos")
+  estado              String?
+  fechaAgregado       DateTime?     @map("fecha_agregado") @db.Timestamp(6)
+  id                  String        @id @default(cuid()) @db.Uuid
+  notas               String?
+  precioFinal         Decimal?      @map("precio_final") @db.Decimal(10, 2)
+  serviceEntity       ServiceEntity @relation(fields: [service_id], references: [id])
+  service_id          String
+  user                User?         @relation(fields: [staff_id], references: [id])
+  staff_id            String?
 
   @@map("appointment_services")
 }
 
 model Payment {
-  appointment    Appointment @relation(fields: [appointment_id], references: [id])
+  appointment   Appointment @relation(fields: [appointment_id], references: [id])
   appointment_id String
-  createdAt      DateTime?   @map("created_at") @db.Timestamp(6)
-  detallePago    Json?       @map("detalle_pago")
-  fechaPago      DateTime?   @map("fecha_pago") @db.Timestamp(6)
-  id             String      @id @default(cuid()) @db.Uuid
-  metodoPago     String?     @map("metodo_pago")
-  montoTotal     Decimal?    @map("monto_total") @db.Decimal(10, 2)
+  createdAt      DateTime?  @map("created_at") @db.Timestamp(6)
+  detallePago    Json?      @map("detalle_pago")
+  fechaPago      DateTime?  @map("fecha_pago") @db.Timestamp(6)
+  id             String     @id @default(cuid()) @db.Uuid
+  metodoPago     String?    @map("metodo_pago")
+  montoTotal     Decimal?   @map("monto_total") @db.Decimal(10, 2)
 
   @@map("payments")
 }
@@ -185,17 +185,17 @@ model AuditLog {
 }
 
 model Notification {
-  appointment     Appointment @relation(fields: [appointment_id], references: [id])
-  appointment_id  String
-  client          Client      @relation(fields: [client_id], references: [id])
-  client_id       String
-  createdAt       DateTime?   @map("created_at") @db.Timestamp(6)
-  estado          String?
-  fechaEnvio      DateTime?   @map("fecha_envio") @db.Timestamp(6)
-  fechaProgramada DateTime?   @map("fecha_programada") @db.Timestamp(6)
-  id              String      @id @default(cuid()) @db.Uuid
-  mensaje         String?
-  tipo            String?
+  appointment      Appointment @relation(fields: [appointment_id], references: [id])
+  appointment_id   String
+  client           Client      @relation(fields: [client_id], references: [id])
+  client_id        String
+  createdAt        DateTime?   @map("created_at") @db.Timestamp(6)
+  estado           String?
+  fechaEnvio       DateTime?   @map("fecha_envio") @db.Timestamp(6)
+  fechaProgramada  DateTime?   @map("fecha_programada") @db.Timestamp(6)
+  id               String      @id @default(cuid()) @db.Uuid
+  mensaje          String?
+  tipo             String?
 
   @@map("notifications")
 }
