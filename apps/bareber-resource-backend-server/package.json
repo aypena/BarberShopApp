@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "nest start",
+    "start:prod": "node dist/main",
     "start:watch": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "build": "nest build",
@@ -72,6 +73,8 @@
     "moduleNameMapper": {
       "@app/custom-validators": "<rootDir>/src/validators"
     },
-    "modulePathIgnorePatterns": ["<rootDir>/dist/"]
+    "modulePathIgnorePatterns": [
+      "<rootDir>/dist/"
+    ]
   }
 }
