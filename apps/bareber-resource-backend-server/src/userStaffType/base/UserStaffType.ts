@@ -32,7 +32,7 @@ class UserStaffType {
   })
   @ValidateNested()
   @Type(() => StaffType)
-  staffTypes?: StaffType;
+  staffType?: StaffType;
 
   @ApiProperty({
     required: true,
@@ -40,7 +40,7 @@ class UserStaffType {
   })
   @ValidateNested()
   @Type(() => User)
-  users?: User;
+  user?: User;
 }
 
 export { UserStaffType as UserStaffType };

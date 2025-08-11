@@ -30,7 +30,7 @@ class Notification {
   })
   @ValidateNested()
   @Type(() => Appointment)
-  appointments?: Appointment;
+  appointment?: Appointment;
 
   @ApiProperty({
     required: true,
@@ -38,7 +38,7 @@ class Notification {
   })
   @ValidateNested()
   @Type(() => Client)
-  clients?: Client;
+  client?: Client;
 
   @ApiProperty({
     required: false,

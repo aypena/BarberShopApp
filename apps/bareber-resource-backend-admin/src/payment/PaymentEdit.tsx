@@ -18,9 +18,9 @@ export const PaymentEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <ReferenceInput
-          source="appointments.id"
+          source="appointment.id"
           reference="Appointment"
-          label="Appointments"
+          label="Appointment"
         >
           <SelectInput optionText={AppointmentTitle} />
         </ReferenceInput>

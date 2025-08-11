@@ -1,9 +1,9 @@
-import { ServiceStaffTypeCreateNestedManyWithoutStaffTypesInput } from "./ServiceStaffTypeCreateNestedManyWithoutStaffTypesInput";
+import { ServiceStaffLinkCreateNestedManyWithoutStaffTypesInput } from "./ServiceStaffLinkCreateNestedManyWithoutStaffTypesInput";
 import { UserStaffTypeCreateNestedManyWithoutStaffTypesInput } from "./UserStaffTypeCreateNestedManyWithoutStaffTypesInput";
 
 export type StaffTypeCreateInput = {
   descripcion?: string | null;
   nombre?: string | null;
-  serviceStaffTypes?: ServiceStaffTypeCreateNestedManyWithoutStaffTypesInput;
+  serviceStaffLinks?: ServiceStaffLinkCreateNestedManyWithoutStaffTypesInput;
   userStaffTypes?: UserStaffTypeCreateNestedManyWithoutStaffTypesInput;
 };

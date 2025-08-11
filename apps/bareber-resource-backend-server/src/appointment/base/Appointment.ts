@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
 import {
   ValidateNested,
   IsOptional,
@@ -28,12 +28,12 @@ import { Payment } from "../../payment/base/Payment";
 class Appointment {
   @ApiProperty({
     required: false,
-    type: () => [AppointmentService],
+    type: () => [AppointmentServiceItem],
   })
   @ValidateNested()
-  @Type(() => AppointmentService)
+  @Type(() => AppointmentServiceItem)
   @IsOptional()
-  appointmentServices?: Array<AppointmentService>;
+  appointmentServices?: Array<AppointmentServiceItem>;
 
   @ApiProperty({
     required: true,
@@ -41,7 +41,7 @@ class Appointment {
   })
   @ValidateNested()
   @Type(() => Client)
-  clients?: Client;
+  client?: Client;
 
   @ApiProperty({
     required: false,

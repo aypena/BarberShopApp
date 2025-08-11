@@ -20,8 +20,8 @@ import { StaffTypeFindUniqueArgs } from "./StaffTypeFindUniqueArgs";
 import { CreateStaffTypeArgs } from "./CreateStaffTypeArgs";
 import { UpdateStaffTypeArgs } from "./UpdateStaffTypeArgs";
 import { DeleteStaffTypeArgs } from "./DeleteStaffTypeArgs";
-import { ServiceStaffTypeFindManyArgs } from "../../serviceStaffType/base/ServiceStaffTypeFindManyArgs";
-import { ServiceStaffType } from "../../serviceStaffType/base/ServiceStaffType";
+import { ServiceStaffLinkFindManyArgs } from "../../serviceStaffLink/base/ServiceStaffLinkFindManyArgs";
+import { ServiceStaffLink } from "../../serviceStaffLink/base/ServiceStaffLink";
 import { UserStaffTypeFindManyArgs } from "../../userStaffType/base/UserStaffTypeFindManyArgs";
 import { UserStaffType } from "../../userStaffType/base/UserStaffType";
 import { StaffTypeService } from "../staffType.service";
@@ -101,12 +101,12 @@ export class StaffTypeResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => [ServiceStaffType], { name: "serviceStaffTypes" })
-  async findServiceStaffTypes(
+  @graphql.ResolveField(() => [ServiceStaffLink], { name: "serviceStaffLinks" })
+  async findServiceStaffLinks(
     @graphql.Parent() parent: StaffType,
-    @graphql.Args() args: ServiceStaffTypeFindManyArgs
-  ): Promise<ServiceStaffType[]> {
-    const results = await this.service.findServiceStaffTypes(parent.id, args);
+    @graphql.Args() args: ServiceStaffLinkFindManyArgs
+  ): Promise<ServiceStaffLink[]> {
+    const results = await this.service.findServiceStaffLinks(parent.id, args);
 
     if (!results) {
       return [];

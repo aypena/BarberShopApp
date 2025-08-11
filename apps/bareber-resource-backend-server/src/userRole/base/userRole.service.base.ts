@@ -50,19 +50,19 @@ export class UserRoleServiceBase {
     return this.prisma.userRole.delete(args);
   }
 
-  async getRoles(parentId: string): Promise<PrismaRole | null> {
+  async getRole(parentId: string): Promise<PrismaRole | null> {
     return this.prisma.userRole
       .findUnique({
         where: { id: parentId },
       })
-      .roles();
+      .role();
   }
 
-  async getUsers(parentId: string): Promise<PrismaUser | null> {
+  async getUser(parentId: string): Promise<PrismaUser | null> {
     return this.prisma.userRole
       .findUnique({
         where: { id: parentId },
       })
-      .users();
+      .user();
   }
 }

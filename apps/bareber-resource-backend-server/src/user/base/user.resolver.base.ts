@@ -20,10 +20,10 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
-import { AppointmentServiceFindManyArgs } from "../../appointmentService/base/AppointmentServiceFindManyArgs";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
-import { StaffServiceCustomFindManyArgs } from "../../staffServiceCustom/base/StaffServiceCustomFindManyArgs";
-import { StaffServiceCustom } from "../../staffServiceCustom/base/StaffServiceCustom";
+import { AppointmentServiceItemFindManyArgs } from "../../appointmentServiceItem/base/AppointmentServiceItemFindManyArgs";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
+import { StaffCustomServiceFindManyArgs } from "../../staffCustomService/base/StaffCustomServiceFindManyArgs";
+import { StaffCustomService } from "../../staffCustomService/base/StaffCustomService";
 import { UserRoleFindManyArgs } from "../../userRole/base/UserRoleFindManyArgs";
 import { UserRole } from "../../userRole/base/UserRole";
 import { UserStaffTypeFindManyArgs } from "../../userStaffType/base/UserStaffTypeFindManyArgs";
@@ -95,13 +95,13 @@ export class UserResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => [AppointmentService], {
+  @graphql.ResolveField(() => [AppointmentServiceItem], {
     name: "appointmentServices",
   })
   async findAppointmentServices(
     @graphql.Parent() parent: User,
-    @graphql.Args() args: AppointmentServiceFindManyArgs
-  ): Promise<AppointmentService[]> {
+    @graphql.Args() args: AppointmentServiceItemFindManyArgs
+  ): Promise<AppointmentServiceItem[]> {
     const results = await this.service.findAppointmentServices(parent.id, args);
 
     if (!results) {
@@ -111,14 +111,14 @@ export class UserResolverBase {
     return results;
   }
 
-  @graphql.ResolveField(() => [StaffServiceCustom], {
-    name: "staffServiceCustom",
+  @graphql.ResolveField(() => [StaffCustomService], {
+    name: "staffCustomServices",
   })
-  async findStaffServiceCustom(
+  async findStaffCustomServices(
     @graphql.Parent() parent: User,
-    @graphql.Args() args: StaffServiceCustomFindManyArgs
-  ): Promise<StaffServiceCustom[]> {
-    const results = await this.service.findStaffServiceCustom(parent.id, args);
+    @graphql.Args() args: StaffCustomServiceFindManyArgs
+  ): Promise<StaffCustomService[]> {
+    const results = await this.service.findStaffCustomServices(parent.id, args);
 
     if (!results) {
       return [];

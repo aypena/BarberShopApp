@@ -63,12 +63,12 @@ export class UserStaffTypeResolverBase {
       data: {
         ...args.data,
 
-        staffTypes: {
-          connect: args.data.staffTypes,
+        staffType: {
+          connect: args.data.staffType,
         },
 
-        users: {
-          connect: args.data.users,
+        user: {
+          connect: args.data.user,
         },
       },
     });
@@ -84,12 +84,12 @@ export class UserStaffTypeResolverBase {
         data: {
           ...args.data,
 
-          staffTypes: {
-            connect: args.data.staffTypes,
+          staffType: {
+            connect: args.data.staffType,
           },
 
-          users: {
-            connect: args.data.users,
+          user: {
+            connect: args.data.user,
           },
         },
       });
@@ -121,12 +121,12 @@ export class UserStaffTypeResolverBase {
 
   @graphql.ResolveField(() => StaffType, {
     nullable: true,
-    name: "staffTypes",
+    name: "staffType",
   })
-  async getStaffTypes(
+  async getStaffType(
     @graphql.Parent() parent: UserStaffType
   ): Promise<StaffType | null> {
-    const result = await this.service.getStaffTypes(parent.id);
+    const result = await this.service.getStaffType(parent.id);
 
     if (!result) {
       return null;
@@ -136,12 +136,10 @@ export class UserStaffTypeResolverBase {
 
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "users",
+    name: "user",
   })
-  async getUsers(
-    @graphql.Parent() parent: UserStaffType
-  ): Promise<User | null> {
-    const result = await this.service.getUsers(parent.id);
+  async getUser(@graphql.Parent() parent: UserStaffType): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

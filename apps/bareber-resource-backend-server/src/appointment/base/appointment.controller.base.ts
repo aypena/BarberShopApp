@@ -17,14 +17,14 @@ import { Request } from "express";
 import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { AppointmentService } from "../appointment.service";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
 import { AppointmentCreateInput } from "./AppointmentCreateInput";
 import { Appointment } from "./Appointment";
 import { AppointmentFindManyArgs } from "./AppointmentFindManyArgs";
 import { AppointmentWhereUniqueInput } from "./AppointmentWhereUniqueInput";
 import { AppointmentUpdateInput } from "./AppointmentUpdateInput";
-import { AppointmentServiceFindManyArgs } from "../../appointmentService/base/AppointmentServiceFindManyArgs";
-import { AppointmentServiceWhereUniqueInput } from "../../appointmentService/base/AppointmentServiceWhereUniqueInput";
+import { AppointmentServiceItemFindManyArgs } from "../../appointmentServiceItem/base/AppointmentServiceItemFindManyArgs";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
+import { AppointmentServiceItemWhereUniqueInput } from "../../appointmentServiceItem/base/AppointmentServiceItemWhereUniqueInput";
 import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
 import { Notification } from "../../notification/base/Notification";
 import { NotificationWhereUniqueInput } from "../../notification/base/NotificationWhereUniqueInput";
@@ -43,12 +43,12 @@ export class AppointmentControllerBase {
       data: {
         ...data,
 
-        clients: {
-          connect: data.clients,
+        client: {
+          connect: data.client,
         },
       },
       select: {
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -73,7 +73,7 @@ export class AppointmentControllerBase {
     return this.service.appointments({
       ...args,
       select: {
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -99,7 +99,7 @@ export class AppointmentControllerBase {
     const result = await this.service.appointment({
       where: params,
       select: {
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -135,12 +135,12 @@ export class AppointmentControllerBase {
         data: {
           ...data,
 
-          clients: {
-            connect: data.clients,
+          client: {
+            connect: data.client,
           },
         },
         select: {
-          clients: {
+          client: {
             select: {
               id: true,
             },
@@ -175,7 +175,7 @@ export class AppointmentControllerBase {
       return await this.service.deleteAppointment({
         where: params,
         select: {
-          clients: {
+          client: {
             select: {
               id: true,
             },
@@ -201,16 +201,19 @@ export class AppointmentControllerBase {
   }
 
   @common.Get("/:id/appointmentServices")
-  @ApiNestedQuery(AppointmentServiceFindManyArgs)
+  @ApiNestedQuery(AppointmentServiceItemFindManyArgs)
   async findAppointmentServices(
     @common.Req() request: Request,
     @common.Param() params: AppointmentWhereUniqueInput
-  ): Promise<AppointmentService[]> {
-    const query = plainToClass(AppointmentServiceFindManyArgs, request.query);
+  ): Promise<AppointmentServiceItem[]> {
+    const query = plainToClass(
+      AppointmentServiceItemFindManyArgs,
+      request.query
+    );
     const results = await this.service.findAppointmentServices(params.id, {
       ...query,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
@@ -223,13 +226,13 @@ export class AppointmentControllerBase {
         notas: true,
         precioFinal: true,
 
-        services: {
+        serviceEntity: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -247,7 +250,7 @@ export class AppointmentControllerBase {
   @common.Post("/:id/appointmentServices")
   async connectAppointmentServices(
     @common.Param() params: AppointmentWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -264,7 +267,7 @@ export class AppointmentControllerBase {
   @common.Patch("/:id/appointmentServices")
   async updateAppointmentServices(
     @common.Param() params: AppointmentWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -281,7 +284,7 @@ export class AppointmentControllerBase {
   @common.Delete("/:id/appointmentServices")
   async disconnectAppointmentServices(
     @common.Param() params: AppointmentWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -305,13 +308,13 @@ export class AppointmentControllerBase {
     const results = await this.service.findNotifications(params.id, {
       ...query,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
         },
 
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -395,7 +398,7 @@ export class AppointmentControllerBase {
     const results = await this.service.findPayments(params.id, {
       ...query,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },

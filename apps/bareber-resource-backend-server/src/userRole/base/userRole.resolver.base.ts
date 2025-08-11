@@ -63,12 +63,12 @@ export class UserRoleResolverBase {
       data: {
         ...args.data,
 
-        roles: {
-          connect: args.data.roles,
+        role: {
+          connect: args.data.role,
         },
 
-        users: {
-          connect: args.data.users,
+        user: {
+          connect: args.data.user,
         },
       },
     });
@@ -84,12 +84,12 @@ export class UserRoleResolverBase {
         data: {
           ...args.data,
 
-          roles: {
-            connect: args.data.roles,
+          role: {
+            connect: args.data.role,
           },
 
-          users: {
-            connect: args.data.users,
+          user: {
+            connect: args.data.user,
           },
         },
       });
@@ -121,10 +121,10 @@ export class UserRoleResolverBase {
 
   @graphql.ResolveField(() => Role, {
     nullable: true,
-    name: "roles",
+    name: "role",
   })
-  async getRoles(@graphql.Parent() parent: UserRole): Promise<Role | null> {
-    const result = await this.service.getRoles(parent.id);
+  async getRole(@graphql.Parent() parent: UserRole): Promise<Role | null> {
+    const result = await this.service.getRole(parent.id);
 
     if (!result) {
       return null;
@@ -134,10 +134,10 @@ export class UserRoleResolverBase {
 
   @graphql.ResolveField(() => User, {
     nullable: true,
-    name: "users",
+    name: "user",
   })
-  async getUsers(@graphql.Parent() parent: UserRole): Promise<User | null> {
-    const result = await this.service.getUsers(parent.id);
+  async getUser(@graphql.Parent() parent: UserRole): Promise<User | null> {
+    const result = await this.service.getUser(parent.id);
 
     if (!result) {
       return null;

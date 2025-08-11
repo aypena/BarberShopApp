@@ -15,10 +15,10 @@ export const UserRoleEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <DateTimeInput label="Assigned At" source="assignedAt" />
-        <ReferenceInput source="roles.id" reference="Role" label="Roles">
+        <ReferenceInput source="role.id" reference="Role" label="Role">
           <SelectInput optionText={RoleTitle} />
         </ReferenceInput>
-        <ReferenceInput source="users.id" reference="User" label="Users">
+        <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

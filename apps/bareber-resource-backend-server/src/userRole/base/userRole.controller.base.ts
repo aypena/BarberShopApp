@@ -34,25 +34,25 @@ export class UserRoleControllerBase {
       data: {
         ...data,
 
-        roles: {
-          connect: data.roles,
+        role: {
+          connect: data.role,
         },
 
-        users: {
-          connect: data.users,
+        user: {
+          connect: data.user,
         },
       },
       select: {
         assignedAt: true,
         id: true,
 
-        roles: {
+        role: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -72,13 +72,13 @@ export class UserRoleControllerBase {
         assignedAt: true,
         id: true,
 
-        roles: {
+        role: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -99,13 +99,13 @@ export class UserRoleControllerBase {
         assignedAt: true,
         id: true,
 
-        roles: {
+        role: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -133,25 +133,25 @@ export class UserRoleControllerBase {
         data: {
           ...data,
 
-          roles: {
-            connect: data.roles,
+          role: {
+            connect: data.role,
           },
 
-          users: {
-            connect: data.users,
+          user: {
+            connect: data.user,
           },
         },
         select: {
           assignedAt: true,
           id: true,
 
-          roles: {
+          role: {
             select: {
               id: true,
             },
           },
 
-          users: {
+          user: {
             select: {
               id: true,
             },
@@ -181,13 +181,13 @@ export class UserRoleControllerBase {
           assignedAt: true,
           id: true,
 
-          roles: {
+          role: {
             select: {
               id: true,
             },
           },
 
-          users: {
+          user: {
             select: {
               id: true,
             },

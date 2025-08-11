@@ -3,7 +3,7 @@ import { JsonValue } from "type-fest";
 import { Decimal } from "decimal.js";
 
 export type Payment = {
-  appointments?: Appointment;
+  appointment?: Appointment;
   createdAt: Date | null;
   detallePago: JsonValue;
   fechaPago: Date | null;

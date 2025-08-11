@@ -34,24 +34,24 @@ export class UserStaffTypeControllerBase {
       data: {
         ...data,
 
-        staffTypes: {
-          connect: data.staffTypes,
+        staffType: {
+          connect: data.staffType,
         },
 
-        users: {
-          connect: data.users,
+        user: {
+          connect: data.user,
         },
       },
       select: {
         id: true,
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -72,13 +72,13 @@ export class UserStaffTypeControllerBase {
       select: {
         id: true,
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -98,13 +98,13 @@ export class UserStaffTypeControllerBase {
       select: {
         id: true,
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -132,24 +132,24 @@ export class UserStaffTypeControllerBase {
         data: {
           ...data,
 
-          staffTypes: {
-            connect: data.staffTypes,
+          staffType: {
+            connect: data.staffType,
           },
 
-          users: {
-            connect: data.users,
+          user: {
+            connect: data.user,
           },
         },
         select: {
           id: true,
 
-          staffTypes: {
+          staffType: {
             select: {
               id: true,
             },
           },
 
-          users: {
+          user: {
             select: {
               id: true,
             },
@@ -178,13 +178,13 @@ export class UserStaffTypeControllerBase {
         select: {
           id: true,
 
-          staffTypes: {
+          staffType: {
             select: {
               id: true,
             },
           },
 
-          users: {
+          user: {
             select: {
               id: true,
             },

@@ -14,11 +14,11 @@ import { ApiProperty } from "@nestjs/swagger";
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
-import { AppointmentServiceListRelationFilter } from "../../appointmentService/base/AppointmentServiceListRelationFilter";
+import { AppointmentServiceItemListRelationFilter } from "../../appointmentServiceItem/base/AppointmentServiceItemListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { StaffServiceCustomListRelationFilter } from "../../staffServiceCustom/base/StaffServiceCustomListRelationFilter";
+import { StaffCustomServiceListRelationFilter } from "../../staffCustomService/base/StaffCustomServiceListRelationFilter";
 import { UserRoleListRelationFilter } from "../../userRole/base/UserRoleListRelationFilter";
 import { UserStaffTypeListRelationFilter } from "../../userStaffType/base/UserStaffTypeListRelationFilter";
 
@@ -37,15 +37,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceListRelationFilter,
+    type: () => AppointmentServiceItemListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceListRelationFilter)
+  @Type(() => AppointmentServiceItemListRelationFilter)
   @IsOptional()
-  @Field(() => AppointmentServiceListRelationFilter, {
+  @Field(() => AppointmentServiceItemListRelationFilter, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceListRelationFilter;
+  appointmentServices?: AppointmentServiceItemListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -104,15 +104,15 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => StaffServiceCustomListRelationFilter,
+    type: () => StaffCustomServiceListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => StaffServiceCustomListRelationFilter)
+  @Type(() => StaffCustomServiceListRelationFilter)
   @IsOptional()
-  @Field(() => StaffServiceCustomListRelationFilter, {
+  @Field(() => StaffCustomServiceListRelationFilter, {
     nullable: true,
   })
-  staffServiceCustom?: StaffServiceCustomListRelationFilter;
+  staffCustomServices?: StaffCustomServiceListRelationFilter;
 
   @ApiProperty({
     required: false,

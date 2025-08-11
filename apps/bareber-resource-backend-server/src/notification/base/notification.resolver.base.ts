@@ -63,12 +63,12 @@ export class NotificationResolverBase {
       data: {
         ...args.data,
 
-        appointments: {
-          connect: args.data.appointments,
+        appointment: {
+          connect: args.data.appointment,
         },
 
-        clients: {
-          connect: args.data.clients,
+        client: {
+          connect: args.data.client,
         },
       },
     });
@@ -84,12 +84,12 @@ export class NotificationResolverBase {
         data: {
           ...args.data,
 
-          appointments: {
-            connect: args.data.appointments,
+          appointment: {
+            connect: args.data.appointment,
           },
 
-          clients: {
-            connect: args.data.clients,
+          client: {
+            connect: args.data.client,
           },
         },
       });
@@ -121,12 +121,12 @@ export class NotificationResolverBase {
 
   @graphql.ResolveField(() => Appointment, {
     nullable: true,
-    name: "appointments",
+    name: "appointment",
   })
-  async getAppointments(
+  async getAppointment(
     @graphql.Parent() parent: Notification
   ): Promise<Appointment | null> {
-    const result = await this.service.getAppointments(parent.id);
+    const result = await this.service.getAppointment(parent.id);
 
     if (!result) {
       return null;
@@ -136,12 +136,12 @@ export class NotificationResolverBase {
 
   @graphql.ResolveField(() => Client, {
     nullable: true,
-    name: "clients",
+    name: "client",
   })
-  async getClients(
+  async getClient(
     @graphql.Parent() parent: Notification
   ): Promise<Client | null> {
-    const result = await this.service.getClients(parent.id);
+    const result = await this.service.getClient(parent.id);
 
     if (!result) {
       return null;

@@ -19,7 +19,7 @@ export const PaymentList = (props: ListProps): React.ReactElement => {
     >
       <Datagrid rowClick="show" bulkActionButtons={false}>
         <ReferenceField
-          label="Appointments"
+          label="Appointment"
           source="appointment.id"
           reference="Appointment"
         >

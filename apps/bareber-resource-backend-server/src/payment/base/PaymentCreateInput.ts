@@ -36,7 +36,7 @@ class PaymentCreateInput {
   @ValidateNested()
   @Type(() => AppointmentWhereUniqueInput)
   @Field(() => AppointmentWhereUniqueInput)
-  appointments!: AppointmentWhereUniqueInput;
+  appointment!: AppointmentWhereUniqueInput;
 
   @ApiProperty({
     required: false,

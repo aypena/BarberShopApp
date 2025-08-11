@@ -143,13 +143,13 @@ export class RoleControllerBase {
         assignedAt: true,
         id: true,
 
-        roles: {
+        role: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },

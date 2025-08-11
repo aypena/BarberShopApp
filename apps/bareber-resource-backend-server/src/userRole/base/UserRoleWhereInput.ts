@@ -52,7 +52,7 @@ class UserRoleWhereInput {
   @Field(() => RoleWhereUniqueInput, {
     nullable: true,
   })
-  roles?: RoleWhereUniqueInput;
+  role?: RoleWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -64,7 +64,7 @@ class UserRoleWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  users?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { UserRoleWhereInput as UserRoleWhereInput };

@@ -158,7 +158,7 @@ export class ClientControllerBase {
     const results = await this.service.findAppointments(params.id, {
       ...query,
       select: {
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -242,13 +242,13 @@ export class ClientControllerBase {
     const results = await this.service.findNotifications(params.id, {
       ...query,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
         },
 
-        clients: {
+        client: {
           select: {
             id: true,
           },

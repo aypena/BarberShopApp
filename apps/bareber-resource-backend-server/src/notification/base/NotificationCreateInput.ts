@@ -31,7 +31,7 @@ class NotificationCreateInput {
   @ValidateNested()
   @Type(() => AppointmentWhereUniqueInput)
   @Field(() => AppointmentWhereUniqueInput)
-  appointments!: AppointmentWhereUniqueInput;
+  appointment!: AppointmentWhereUniqueInput;
 
   @ApiProperty({
     required: true,
@@ -40,7 +40,7 @@ class NotificationCreateInput {
   @ValidateNested()
   @Type(() => ClientWhereUniqueInput)
   @Field(() => ClientWhereUniqueInput)
-  clients!: ClientWhereUniqueInput;
+  client!: ClientWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -14,8 +14,8 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   User as PrismaUser,
-  AppointmentService as PrismaAppointmentService,
-  StaffServiceCustom as PrismaStaffServiceCustom,
+  AppointmentServiceItem as PrismaAppointmentServiceItem,
+  StaffCustomService as PrismaStaffCustomService,
   UserRole as PrismaUserRole,
   UserStaffType as PrismaUserStaffType,
 } from "@prisma/client";
@@ -45,8 +45,8 @@ export class UserServiceBase {
 
   async findAppointmentServices(
     parentId: string,
-    args: Prisma.AppointmentServiceFindManyArgs
-  ): Promise<PrismaAppointmentService[]> {
+    args: Prisma.AppointmentServiceItemFindManyArgs
+  ): Promise<PrismaAppointmentServiceItem[]> {
     return this.prisma.user
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -54,15 +54,15 @@ export class UserServiceBase {
       .appointmentServices(args);
   }
 
-  async findStaffServiceCustom(
+  async findStaffCustomServices(
     parentId: string,
-    args: Prisma.StaffServiceCustomFindManyArgs
-  ): Promise<PrismaStaffServiceCustom[]> {
+    args: Prisma.StaffCustomServiceFindManyArgs
+  ): Promise<PrismaStaffCustomService[]> {
     return this.prisma.user
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .staffServiceCustom(args);
+      .staffCustomServices(args);
   }
 
   async findUserRoles(

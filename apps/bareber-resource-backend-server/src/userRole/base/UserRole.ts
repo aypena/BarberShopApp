@@ -43,7 +43,7 @@ class UserRole {
   })
   @ValidateNested()
   @Type(() => Role)
-  roles?: Role;
+  role?: Role;
 
   @ApiProperty({
     required: true,
@@ -51,7 +51,7 @@ class UserRole {
   })
   @ValidateNested()
   @Type(() => User)
-  users?: User;
+  user?: User;
 }
 
 export { UserRole as UserRole };

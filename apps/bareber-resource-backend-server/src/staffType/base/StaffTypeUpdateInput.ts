@@ -17,7 +17,7 @@ import {
   IsOptional,
   ValidateNested,
 } from "class-validator";
-import { ServiceStaffTypeUpdateManyWithoutStaffTypesInput } from "./ServiceStaffTypeUpdateManyWithoutStaffTypesInput";
+import { ServiceStaffLinkUpdateManyWithoutStaffTypesInput } from "./ServiceStaffLinkUpdateManyWithoutStaffTypesInput";
 import { Type } from "class-transformer";
 import { UserStaffTypeUpdateManyWithoutStaffTypesInput } from "./UserStaffTypeUpdateManyWithoutStaffTypesInput";
 
@@ -49,15 +49,15 @@ class StaffTypeUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => ServiceStaffTypeUpdateManyWithoutStaffTypesInput,
+    type: () => ServiceStaffLinkUpdateManyWithoutStaffTypesInput,
   })
   @ValidateNested()
-  @Type(() => ServiceStaffTypeUpdateManyWithoutStaffTypesInput)
+  @Type(() => ServiceStaffLinkUpdateManyWithoutStaffTypesInput)
   @IsOptional()
-  @Field(() => ServiceStaffTypeUpdateManyWithoutStaffTypesInput, {
+  @Field(() => ServiceStaffLinkUpdateManyWithoutStaffTypesInput, {
     nullable: true,
   })
-  serviceStaffTypes?: ServiceStaffTypeUpdateManyWithoutStaffTypesInput;
+  serviceStaffLinks?: ServiceStaffLinkUpdateManyWithoutStaffTypesInput;
 
   @ApiProperty({
     required: false,

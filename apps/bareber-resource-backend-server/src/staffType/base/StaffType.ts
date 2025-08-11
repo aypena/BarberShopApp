@@ -17,7 +17,7 @@ import {
   IsOptional,
   ValidateNested,
 } from "class-validator";
-import { ServiceStaffType } from "../../serviceStaffType/base/ServiceStaffType";
+import { ServiceStaffLink } from "../../serviceStaffLink/base/ServiceStaffLink";
 import { Type } from "class-transformer";
 import { UserStaffType } from "../../userStaffType/base/UserStaffType";
 
@@ -57,12 +57,12 @@ class StaffType {
 
   @ApiProperty({
     required: false,
-    type: () => [ServiceStaffType],
+    type: () => [ServiceStaffLink],
   })
   @ValidateNested()
-  @Type(() => ServiceStaffType)
+  @Type(() => ServiceStaffLink)
   @IsOptional()
-  serviceStaffTypes?: Array<ServiceStaffType>;
+  serviceStaffLinks?: Array<ServiceStaffLink>;
 
   @ApiProperty({
     required: false,

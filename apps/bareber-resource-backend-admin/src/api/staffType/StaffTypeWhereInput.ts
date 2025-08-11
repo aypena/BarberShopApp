@@ -1,12 +1,12 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { ServiceStaffTypeListRelationFilter } from "../serviceStaffType/ServiceStaffTypeListRelationFilter";
+import { ServiceStaffLinkListRelationFilter } from "../serviceStaffLink/ServiceStaffLinkListRelationFilter";
 import { UserStaffTypeListRelationFilter } from "../userStaffType/UserStaffTypeListRelationFilter";
 
 export type StaffTypeWhereInput = {
   descripcion?: StringNullableFilter;
   id?: StringFilter;
   nombre?: StringNullableFilter;
-  serviceStaffTypes?: ServiceStaffTypeListRelationFilter;
+  serviceStaffLinks?: ServiceStaffLinkListRelationFilter;
   userStaffTypes?: UserStaffTypeListRelationFilter;
 };

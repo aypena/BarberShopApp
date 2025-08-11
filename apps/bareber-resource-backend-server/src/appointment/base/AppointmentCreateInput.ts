@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentServiceCreateNestedManyWithoutAppointmentsInput } from "./AppointmentServiceCreateNestedManyWithoutAppointmentsInput";
+import { AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput } from "./AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput";
 import {
   ValidateNested,
   IsOptional,
@@ -28,15 +28,15 @@ import { PaymentCreateNestedManyWithoutAppointmentsInput } from "./PaymentCreate
 class AppointmentCreateInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceCreateNestedManyWithoutAppointmentsInput,
+    type: () => AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceCreateNestedManyWithoutAppointmentsInput)
+  @Type(() => AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput)
   @IsOptional()
-  @Field(() => AppointmentServiceCreateNestedManyWithoutAppointmentsInput, {
+  @Field(() => AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceCreateNestedManyWithoutAppointmentsInput;
+  appointmentServices?: AppointmentServiceItemCreateNestedManyWithoutAppointmentsInput;
 
   @ApiProperty({
     required: true,
@@ -45,7 +45,7 @@ class AppointmentCreateInput {
   @ValidateNested()
   @Type(() => ClientWhereUniqueInput)
   @Field(() => ClientWhereUniqueInput)
-  clients!: ClientWhereUniqueInput;
+  client!: ClientWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -15,7 +15,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
-import { ServiceStaffTypeListRelationFilter } from "../../serviceStaffType/base/ServiceStaffTypeListRelationFilter";
+import { ServiceStaffLinkListRelationFilter } from "../../serviceStaffLink/base/ServiceStaffLinkListRelationFilter";
 import { UserStaffTypeListRelationFilter } from "../../userStaffType/base/UserStaffTypeListRelationFilter";
 
 @InputType()
@@ -55,15 +55,15 @@ class StaffTypeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => ServiceStaffTypeListRelationFilter,
+    type: () => ServiceStaffLinkListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => ServiceStaffTypeListRelationFilter)
+  @Type(() => ServiceStaffLinkListRelationFilter)
   @IsOptional()
-  @Field(() => ServiceStaffTypeListRelationFilter, {
+  @Field(() => ServiceStaffLinkListRelationFilter, {
     nullable: true,
   })
-  serviceStaffTypes?: ServiceStaffTypeListRelationFilter;
+  serviceStaffLinks?: ServiceStaffLinkListRelationFilter;
 
   @ApiProperty({
     required: false,

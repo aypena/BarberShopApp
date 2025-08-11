@@ -2,8 +2,8 @@ import { Appointment } from "../appointment/Appointment";
 import { Client } from "../client/Client";
 
 export type Notification = {
-  appointments?: Appointment;
-  clients?: Client;
+  appointment?: Appointment;
+  client?: Client;
   createdAt: Date | null;
   estado: string | null;
   fechaEnvio: Date | null;

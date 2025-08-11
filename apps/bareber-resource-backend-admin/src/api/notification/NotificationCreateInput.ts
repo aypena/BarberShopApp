@@ -2,8 +2,8 @@ import { AppointmentWhereUniqueInput } from "../appointment/AppointmentWhereUniq
 import { ClientWhereUniqueInput } from "../client/ClientWhereUniqueInput";
 
 export type NotificationCreateInput = {
-  appointments: AppointmentWhereUniqueInput;
-  clients: ClientWhereUniqueInput;
+  appointment: AppointmentWhereUniqueInput;
+  client: ClientWhereUniqueInput;
   createdAt?: Date | null;
   estado?: string | null;
   fechaEnvio?: Date | null;

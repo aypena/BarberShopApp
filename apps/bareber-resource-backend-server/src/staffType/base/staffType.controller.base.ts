@@ -22,9 +22,9 @@ import { StaffType } from "./StaffType";
 import { StaffTypeFindManyArgs } from "./StaffTypeFindManyArgs";
 import { StaffTypeWhereUniqueInput } from "./StaffTypeWhereUniqueInput";
 import { StaffTypeUpdateInput } from "./StaffTypeUpdateInput";
-import { ServiceStaffTypeFindManyArgs } from "../../serviceStaffType/base/ServiceStaffTypeFindManyArgs";
-import { ServiceStaffType } from "../../serviceStaffType/base/ServiceStaffType";
-import { ServiceStaffTypeWhereUniqueInput } from "../../serviceStaffType/base/ServiceStaffTypeWhereUniqueInput";
+import { ServiceStaffLinkFindManyArgs } from "../../serviceStaffLink/base/ServiceStaffLinkFindManyArgs";
+import { ServiceStaffLink } from "../../serviceStaffLink/base/ServiceStaffLink";
+import { ServiceStaffLinkWhereUniqueInput } from "../../serviceStaffLink/base/ServiceStaffLinkWhereUniqueInput";
 import { UserStaffTypeFindManyArgs } from "../../userStaffType/base/UserStaffTypeFindManyArgs";
 import { UserStaffType } from "../../userStaffType/base/UserStaffType";
 import { UserStaffTypeWhereUniqueInput } from "../../userStaffType/base/UserStaffTypeWhereUniqueInput";
@@ -135,25 +135,25 @@ export class StaffTypeControllerBase {
     }
   }
 
-  @common.Get("/:id/serviceStaffTypes")
-  @ApiNestedQuery(ServiceStaffTypeFindManyArgs)
-  async findServiceStaffTypes(
+  @common.Get("/:id/serviceStaffLinks")
+  @ApiNestedQuery(ServiceStaffLinkFindManyArgs)
+  async findServiceStaffLinks(
     @common.Req() request: Request,
     @common.Param() params: StaffTypeWhereUniqueInput
-  ): Promise<ServiceStaffType[]> {
-    const query = plainToClass(ServiceStaffTypeFindManyArgs, request.query);
-    const results = await this.service.findServiceStaffTypes(params.id, {
+  ): Promise<ServiceStaffLink[]> {
+    const query = plainToClass(ServiceStaffLinkFindManyArgs, request.query);
+    const results = await this.service.findServiceStaffLinks(params.id, {
       ...query,
       select: {
         id: true,
 
-        services: {
+        serviceEntity: {
           select: {
             id: true,
           },
         },
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
@@ -168,13 +168,13 @@ export class StaffTypeControllerBase {
     return results;
   }
 
-  @common.Post("/:id/serviceStaffTypes")
-  async connectServiceStaffTypes(
+  @common.Post("/:id/serviceStaffLinks")
+  async connectServiceStaffLinks(
     @common.Param() params: StaffTypeWhereUniqueInput,
-    @common.Body() body: ServiceStaffTypeWhereUniqueInput[]
+    @common.Body() body: ServiceStaffLinkWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      serviceStaffTypes: {
+      serviceStaffLinks: {
         connect: body,
       },
     };
@@ -185,13 +185,13 @@ export class StaffTypeControllerBase {
     });
   }
 
-  @common.Patch("/:id/serviceStaffTypes")
-  async updateServiceStaffTypes(
+  @common.Patch("/:id/serviceStaffLinks")
+  async updateServiceStaffLinks(
     @common.Param() params: StaffTypeWhereUniqueInput,
-    @common.Body() body: ServiceStaffTypeWhereUniqueInput[]
+    @common.Body() body: ServiceStaffLinkWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      serviceStaffTypes: {
+      serviceStaffLinks: {
         set: body,
       },
     };
@@ -202,13 +202,13 @@ export class StaffTypeControllerBase {
     });
   }
 
-  @common.Delete("/:id/serviceStaffTypes")
-  async disconnectServiceStaffTypes(
+  @common.Delete("/:id/serviceStaffLinks")
+  async disconnectServiceStaffLinks(
     @common.Param() params: StaffTypeWhereUniqueInput,
-    @common.Body() body: ServiceStaffTypeWhereUniqueInput[]
+    @common.Body() body: ServiceStaffLinkWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      serviceStaffTypes: {
+      serviceStaffLinks: {
         disconnect: body,
       },
     };
@@ -231,13 +231,13 @@ export class StaffTypeControllerBase {
       select: {
         id: true,
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },

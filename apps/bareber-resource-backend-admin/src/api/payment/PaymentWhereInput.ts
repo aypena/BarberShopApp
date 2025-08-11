@@ -6,7 +6,7 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DecimalNullableFilter } from "../../util/DecimalNullableFilter";
 
 export type PaymentWhereInput = {
-  appointments?: AppointmentWhereUniqueInput;
+  appointment?: AppointmentWhereUniqueInput;
   createdAt?: DateTimeNullableFilter;
   detallePago?: JsonFilter;
   fechaPago?: DateTimeNullableFilter;

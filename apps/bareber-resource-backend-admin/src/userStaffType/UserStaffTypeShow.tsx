@@ -15,13 +15,13 @@ export const UserStaffTypeShow = (props: ShowProps): React.ReactElement => {
       <SimpleShowLayout>
         <TextField label="ID" source="id" />
         <ReferenceField
-          label="Staff Types"
+          label="Staff Type"
           source="stafftype.id"
           reference="StaffType"
         >
           <TextField source={STAFFTYPE_TITLE_FIELD} />
         </ReferenceField>
-        <ReferenceField label="Users" source="user.id" reference="User">
+        <ReferenceField label="User" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </SimpleShowLayout>

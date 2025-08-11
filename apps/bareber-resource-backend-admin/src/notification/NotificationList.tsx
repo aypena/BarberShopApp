@@ -20,13 +20,13 @@ export const NotificationList = (props: ListProps): React.ReactElement => {
     >
       <Datagrid rowClick="show" bulkActionButtons={false}>
         <ReferenceField
-          label="Appointments"
+          label="Appointment"
           source="appointment.id"
           reference="Appointment"
         >
           <TextField source={APPOINTMENT_TITLE_FIELD} />
         </ReferenceField>
-        <ReferenceField label="Clients" source="client.id" reference="Client">
+        <ReferenceField label="Client" source="client.id" reference="Client">
           <TextField source={CLIENT_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Created At" source="createdAt" />

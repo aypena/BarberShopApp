@@ -31,7 +31,7 @@ class NotificationWhereInput {
   @Field(() => AppointmentWhereUniqueInput, {
     nullable: true,
   })
-  appointments?: AppointmentWhereUniqueInput;
+  appointment?: AppointmentWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -43,7 +43,7 @@ class NotificationWhereInput {
   @Field(() => ClientWhereUniqueInput, {
     nullable: true,
   })
-  clients?: ClientWhereUniqueInput;
+  client?: ClientWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentServiceListRelationFilter } from "../../appointmentService/base/AppointmentServiceListRelationFilter";
+import { AppointmentServiceItemListRelationFilter } from "../../appointmentServiceItem/base/AppointmentServiceItemListRelationFilter";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { ClientWhereUniqueInput } from "../../client/base/ClientWhereUniqueInput";
@@ -25,15 +25,15 @@ import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelatio
 class AppointmentWhereInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceListRelationFilter,
+    type: () => AppointmentServiceItemListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceListRelationFilter)
+  @Type(() => AppointmentServiceItemListRelationFilter)
   @IsOptional()
-  @Field(() => AppointmentServiceListRelationFilter, {
+  @Field(() => AppointmentServiceItemListRelationFilter, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceListRelationFilter;
+  appointmentServices?: AppointmentServiceItemListRelationFilter;
 
   @ApiProperty({
     required: false,
@@ -45,7 +45,7 @@ class AppointmentWhereInput {
   @Field(() => ClientWhereUniqueInput, {
     nullable: true,
   })
-  clients?: ClientWhereUniqueInput;
+  client?: ClientWhereUniqueInput;
 
   @ApiProperty({
     required: false,

@@ -25,7 +25,7 @@ class UserStaffTypeCreateInput {
   @ValidateNested()
   @Type(() => StaffTypeWhereUniqueInput)
   @Field(() => StaffTypeWhereUniqueInput)
-  staffTypes!: StaffTypeWhereUniqueInput;
+  staffType!: StaffTypeWhereUniqueInput;
 
   @ApiProperty({
     required: true,
@@ -34,7 +34,7 @@ class UserStaffTypeCreateInput {
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
   @Field(() => UserWhereUniqueInput)
-  users!: UserWhereUniqueInput;
+  user!: UserWhereUniqueInput;
 }
 
 export { UserStaffTypeCreateInput as UserStaffTypeCreateInput };

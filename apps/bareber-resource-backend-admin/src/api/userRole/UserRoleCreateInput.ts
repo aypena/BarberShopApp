@@ -3,6 +3,6 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type UserRoleCreateInput = {
   assignedAt?: Date | null;
-  roles: RoleWhereUniqueInput;
-  users: UserWhereUniqueInput;
+  role: RoleWhereUniqueInput;
+  user: UserWhereUniqueInput;
 };
