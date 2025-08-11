@@ -1,13 +1,12 @@
-# Etapa 1: Construcción
 FROM node:18 AS builder
 WORKDIR /app
 COPY apps/bareber-resource-backend-admin/package*.json ./
 RUN npm install
 COPY apps/bareber-resource-backend-admin ./
-RUN npx prisma generate
+COPY apps/bareber-resource-backend-admin/prisma ./prisma
+RUN npx prisma generate --schema=prisma/schema.prisma
 RUN npm run build
 
-# Etapa 2: Ejecución
 FROM node:18
 WORKDIR /app
 COPY --from=builder /app ./
