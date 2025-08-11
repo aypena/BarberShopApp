@@ -1,0 +1,201 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  activo              Boolean?
+  appointmentServices AppointmentService[]
+  email               String?              @unique
+  fechaRegistro       DateTime?            @map("fecha_registro") @db.Timestamp(6)
+  id                  String               @id @default(cuid()) @db.Uuid
+  nombre              String?
+  passwordHash        String?              @map("password_hash")
+  staffServiceCustom  StaffServiceCustom[]
+  telefono            String?
+  userRoles           UserRole[]
+  userStaffTypes      UserStaffType[]
+
+  @@map("users")
+}
+
+model Role {
+  descripcion String?
+  id          String     @id @default(cuid()) @db.Uuid
+  nombre      String?    @unique
+  userRoles   UserRole[]
+
+  @@map("roles")
+}
+
+model UserRole {
+  assignedAt DateTime? @map("assigned_at") @db.Timestamp(6)
+  id         String    @id @default(cuid())
+  roles      Role      @relation(fields: [role_id], references: [id])
+  role_id    String
+  users      User      @relation(fields: [user_id], references: [id])
+  user_id    String
+
+  @@map("user_roles")
+}
+
+model StaffType {
+  descripcion       String?
+  id                String             @id @default(cuid()) @db.Uuid
+  nombre            String?            @unique
+  serviceStaffTypes ServiceStaffType[]
+  userStaffTypes    UserStaffType[]
+
+  @@map("staff_types")
+}
+
+model UserStaffType {
+  id            String    @id @default(cuid())
+  staffTypes    StaffType @relation(fields: [staff_type_id], references: [id])
+  staff_type_id String
+  users         User      @relation(fields: [user_id], references: [id])
+  user_id       String
+
+  @@map("user_staff_types")
+}
+
+model Service {
+  activo              Boolean?
+  appointmentServices AppointmentService[]
+  categoria           String?
+  createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
+  descripcion         String?
+  duracionBaseMinutos Int?                 @map("duracion_base_minutos")
+  id                  String               @id @default(cuid()) @db.Uuid
+  nombre              String?
+  precioBase          Decimal?             @map("precio_base") @db.Decimal(10, 2)
+  serviceStaffTypes   ServiceStaffType[]
+  staffServiceCustom  StaffServiceCustom[]
+
+  @@map("services")
+}
+
+model ServiceStaffType {
+  id            String    @id @default(cuid())
+  services      Service   @relation(fields: [service_id], references: [id])
+  service_id    String
+  staffTypes    StaffType @relation(fields: [staff_type_id], references: [id])
+  staff_type_id String
+
+  @@map("service_staff_types")
+}
+
+model StaffServiceCustom {
+  duracionCustomMinutos Int?      @map("duracion_custom_minutos")
+  id                    String    @id @default(cuid())
+  precioCustom          Decimal?  @map("precio_custom") @db.Decimal(10, 2)
+  services              Service   @relation(fields: [service_id], references: [id])
+  service_id            String
+  updatedAt             DateTime? @map("updated_at") @db.Timestamp(6)
+  users                 User      @relation(fields: [staff_id], references: [id])
+  staff_id              String
+
+  @@map("staff_service_custom")
+}
+
+model Client {
+  appointments  Appointment[]
+  datosExtra    Json?          @map("datos_extra")
+  email         String?
+  fechaRegistro DateTime?      @map("fecha_registro") @db.Timestamp(6)
+  id            String         @id @default(cuid()) @db.Uuid
+  nombre        String?
+  notifications Notification[]
+  telefono      String?
+
+  @@map("clients")
+}
+
+model Appointment {
+  appointmentServices AppointmentService[]
+  clients             Client               @relation(fields: [client_id], references: [id])
+  client_id           String
+  createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
+  estado              String?
+  fechaFin            DateTime?            @map("fecha_fin") @db.Timestamp(6)
+  fechaInicio         DateTime?            @map("fecha_inicio") @db.Timestamp(6)
+  id                  String               @id @default(cuid()) @db.Uuid
+  notas               String?
+  notifications       Notification[]
+  payments            Payment[]
+  updatedAt           DateTime?            @map("updated_at") @db.Timestamp(6)
+
+  @@map("appointments")
+}
+
+model AppointmentService {
+  appointments         Appointment @relation(fields: [appointment_id], references: [id])
+  appointment_id       String
+  duracionFinalMinutos Int?        @map("duracion_final_minutos")
+  estado               String?
+  fechaAgregado        DateTime?   @map("fecha_agregado") @db.Timestamp(6)
+  id                   String      @id @default(cuid()) @db.Uuid
+  notas                String?
+  precioFinal          Decimal?    @map("precio_final") @db.Decimal(10, 2)
+  services             Service     @relation(fields: [service_id], references: [id])
+  service_id           String
+  users                User?       @relation(fields: [staff_id], references: [id])
+  staff_id             String?
+
+  @@map("appointment_services")
+}
+
+model Payment {
+  appointments   Appointment @relation(fields: [appointment_id], references: [id])
+  appointment_id String
+  createdAt      DateTime?   @map("created_at") @db.Timestamp(6)
+  detallePago    Json?       @map("detalle_pago")
+  fechaPago      DateTime?   @map("fecha_pago") @db.Timestamp(6)
+  id             String      @id @default(cuid()) @db.Uuid
+  metodoPago     String?     @map("metodo_pago")
+  montoTotal     Decimal?    @map("monto_total") @db.Decimal(10, 2)
+
+  @@map("payments")
+}
+
+model Setting {
+  descripcion String?
+  id          String    @id @default(cuid()) @map("clave")
+  tipoDato    String?   @map("tipo_dato")
+  updatedAt   DateTime? @map("updated_at") @db.Timestamp(6)
+  valor       String?
+
+  @@map("settings")
+}
+
+model AuditLog {
+  accion        String?
+  cambios       Json?
+  fecha         DateTime? @db.Timestamp(6)
+  id            String    @id @default(cuid()) @db.Uuid
+  registroId    String?   @map("registro_id") @db.Uuid
+  tablaAfectada String?   @map("tabla_afectada")
+  usuarioId     String?   @map("usuario_id") @db.Uuid
+
+  @@map("audit_log")
+}
+
+model Notification {
+  appointments    Appointment @relation(fields: [appointment_id], references: [id])
+  appointment_id  String
+  clients         Client      @relation(fields: [client_id], references: [id])
+  client_id       String
+  createdAt       DateTime?   @map("created_at") @db.Timestamp(6)
+  estado          String?
+  fechaEnvio      DateTime?   @map("fecha_envio") @db.Timestamp(6)
+  fechaProgramada DateTime?   @map("fecha_programada") @db.Timestamp(6)
+  id              String      @id @default(cuid()) @db.Uuid
+  mensaje         String?
+  tipo            String?
+
+  @@map("notifications")
+}
