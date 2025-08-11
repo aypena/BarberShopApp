@@ -1,9 +1,9 @@
 # Etapa 1: Construcción
 FROM node:18 AS builder
 WORKDIR /app
-COPY package*.json ./
+COPY apps/bareber-resource-backend-admin/package*.json ./
 RUN npm install
-COPY . .
+COPY apps/bareber-resource-backend-admin ./
 RUN npx prisma generate
 RUN npm run build
 
