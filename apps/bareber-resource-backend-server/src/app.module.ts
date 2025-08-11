@@ -1,15 +1,15 @@
 import { Module } from "@nestjs/common";
-import { UserModule } from "./user/user.module";
 import { RoleModule } from "./role/role.module";
+import { UserModule } from "./user/user.module";
 import { UserRoleModule } from "./userRole/userRole.module";
 import { StaffTypeModule } from "./staffType/staffType.module";
 import { UserStaffTypeModule } from "./userStaffType/userStaffType.module";
-import { ServiceModule } from "./service/service.module";
-import { ServiceStaffTypeModule } from "./serviceStaffType/serviceStaffType.module";
-import { StaffServiceCustomModule } from "./staffServiceCustom/staffServiceCustom.module";
+import { ServiceEntityModule } from "./serviceEntity/serviceEntity.module";
+import { ServiceStaffLinkModule } from "./serviceStaffLink/serviceStaffLink.module";
+import { StaffCustomServiceModule } from "./staffCustomService/staffCustomService.module";
 import { ClientModule } from "./client/client.module";
 import { AppointmentModule } from "./appointment/appointment.module";
-import { AppointmentServiceModule } from "./appointmentService/appointmentService.module";
+import { AppointmentServiceItemModule } from "./appointmentServiceItem/appointmentServiceItem.module";
 import { PaymentModule } from "./payment/payment.module";
 import { SettingModule } from "./setting/setting.module";
 import { AuditLogModule } from "./auditLog/auditLog.module";
@@ -26,17 +26,17 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo";
 @Module({
   controllers: [],
   imports: [
-    UserModule,
     RoleModule,
+    UserModule,
     UserRoleModule,
     StaffTypeModule,
     UserStaffTypeModule,
-    ServiceModule,
-    ServiceStaffTypeModule,
-    StaffServiceCustomModule,
+    ServiceEntityModule,
+    ServiceStaffLinkModule,
+    StaffCustomServiceModule,
     ClientModule,
     AppointmentModule,
-    AppointmentServiceModule,
+    AppointmentServiceItemModule,
     PaymentModule,
     SettingModule,
     AuditLogModule,

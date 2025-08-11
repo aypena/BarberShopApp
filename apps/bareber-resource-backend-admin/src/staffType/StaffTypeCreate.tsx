@@ -9,7 +9,7 @@ import {
   SelectArrayInput,
 } from "react-admin";
 
-import { ServiceStaffTypeTitle } from "../serviceStaffType/ServiceStaffTypeTitle";
+import { ServiceStaffLinkTitle } from "../serviceStaffLink/ServiceStaffLinkTitle";
 import { UserStaffTypeTitle } from "../userStaffType/UserStaffTypeTitle";
 
 export const StaffTypeCreate = (props: CreateProps): React.ReactElement => {
@@ -19,11 +19,11 @@ export const StaffTypeCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="Descripcion" source="descripcion" />
         <TextInput label="Nombre" source="nombre" />
         <ReferenceArrayInput
-          source="serviceStaffTypes"
-          reference="ServiceStaffType"
+          source="serviceStaffLinks"
+          reference="ServiceStaffLink"
         >
           <SelectArrayInput
-            optionText={ServiceStaffTypeTitle}
+            optionText={ServiceStaffLinkTitle}
             parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
             format={(value: any) => value && value.map((v: any) => v.id)}
           />

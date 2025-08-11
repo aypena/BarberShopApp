@@ -32,7 +32,7 @@ class PaymentWhereInput {
   @Field(() => AppointmentWhereUniqueInput, {
     nullable: true,
   })
-  appointments?: AppointmentWhereUniqueInput;
+  appointment?: AppointmentWhereUniqueInput;
 
   @ApiProperty({
     required: false,

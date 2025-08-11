@@ -19,9 +19,9 @@ import {
   MaxLength,
   IsDate,
 } from "class-validator";
-import { AppointmentServiceUpdateManyWithoutUsersInput } from "./AppointmentServiceUpdateManyWithoutUsersInput";
+import { AppointmentServiceItemUpdateManyWithoutUsersInput } from "./AppointmentServiceItemUpdateManyWithoutUsersInput";
 import { Type } from "class-transformer";
-import { StaffServiceCustomUpdateManyWithoutUsersInput } from "./StaffServiceCustomUpdateManyWithoutUsersInput";
+import { StaffCustomServiceUpdateManyWithoutUsersInput } from "./StaffCustomServiceUpdateManyWithoutUsersInput";
 import { UserRoleUpdateManyWithoutUsersInput } from "./UserRoleUpdateManyWithoutUsersInput";
 import { UserStaffTypeUpdateManyWithoutUsersInput } from "./UserStaffTypeUpdateManyWithoutUsersInput";
 
@@ -40,15 +40,15 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceUpdateManyWithoutUsersInput,
+    type: () => AppointmentServiceItemUpdateManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceUpdateManyWithoutUsersInput)
+  @Type(() => AppointmentServiceItemUpdateManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => AppointmentServiceUpdateManyWithoutUsersInput, {
+  @Field(() => AppointmentServiceItemUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceUpdateManyWithoutUsersInput;
+  appointmentServices?: AppointmentServiceItemUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -99,15 +99,15 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => StaffServiceCustomUpdateManyWithoutUsersInput,
+    type: () => StaffCustomServiceUpdateManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => StaffServiceCustomUpdateManyWithoutUsersInput)
+  @Type(() => StaffCustomServiceUpdateManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => StaffServiceCustomUpdateManyWithoutUsersInput, {
+  @Field(() => StaffCustomServiceUpdateManyWithoutUsersInput, {
     nullable: true,
   })
-  staffServiceCustom?: StaffServiceCustomUpdateManyWithoutUsersInput;
+  staffCustomServices?: StaffCustomServiceUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

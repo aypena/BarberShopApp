@@ -62,8 +62,8 @@ export class PaymentResolverBase {
       data: {
         ...args.data,
 
-        appointments: {
-          connect: args.data.appointments,
+        appointment: {
+          connect: args.data.appointment,
         },
       },
     });
@@ -79,8 +79,8 @@ export class PaymentResolverBase {
         data: {
           ...args.data,
 
-          appointments: {
-            connect: args.data.appointments,
+          appointment: {
+            connect: args.data.appointment,
           },
         },
       });
@@ -112,12 +112,12 @@ export class PaymentResolverBase {
 
   @graphql.ResolveField(() => Appointment, {
     nullable: true,
-    name: "appointments",
+    name: "appointment",
   })
-  async getAppointments(
+  async getAppointment(
     @graphql.Parent() parent: Payment
   ): Promise<Appointment | null> {
-    const result = await this.service.getAppointments(parent.id);
+    const result = await this.service.getAppointment(parent.id);
 
     if (!result) {
       return null;

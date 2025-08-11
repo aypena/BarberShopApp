@@ -39,7 +39,7 @@ class UserRoleUpdateInput {
   @Field(() => RoleWhereUniqueInput, {
     nullable: true,
   })
-  roles?: RoleWhereUniqueInput;
+  role?: RoleWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -51,7 +51,7 @@ class UserRoleUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  users?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { UserRoleUpdateInput as UserRoleUpdateInput };

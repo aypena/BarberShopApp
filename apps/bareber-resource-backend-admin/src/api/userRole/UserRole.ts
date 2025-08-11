@@ -4,6 +4,6 @@ import { User } from "../user/User";
 export type UserRole = {
   assignedAt: Date | null;
   id: string;
-  roles?: Role;
-  users?: User;
+  role?: Role;
+  user?: User;
 };

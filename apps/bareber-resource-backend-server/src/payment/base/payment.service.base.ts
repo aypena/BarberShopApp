@@ -41,11 +41,11 @@ export class PaymentServiceBase {
     return this.prisma.payment.delete(args);
   }
 
-  async getAppointments(parentId: string): Promise<PrismaAppointment | null> {
+  async getAppointment(parentId: string): Promise<PrismaAppointment | null> {
     return this.prisma.payment
       .findUnique({
         where: { id: parentId },
       })
-      .appointments();
+      .appointment();
   }
 }

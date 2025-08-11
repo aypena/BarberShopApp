@@ -10,7 +10,7 @@ import {
   ReferenceField,
 } from "react-admin";
 
-import { SERVICE_TITLE_FIELD } from "../service/ServiceTitle";
+import { SERVICEENTITY_TITLE_FIELD } from "../serviceEntity/ServiceEntityTitle";
 import { STAFFTYPE_TITLE_FIELD } from "./StaffTypeTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 
@@ -22,21 +22,21 @@ export const StaffTypeShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="Nombre" source="nombre" />
         <ReferenceManyField
-          reference="ServiceStaffType"
+          reference="ServiceStaffLink"
           target="staff_type_id"
-          label="ServiceStaffTypes"
+          label="ServiceStaffLinks"
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <TextField label="ID" source="id" />
             <ReferenceField
-              label="Services"
-              source="service.id"
-              reference="Service"
+              label="Service Entity"
+              source="serviceentity.id"
+              reference="ServiceEntity"
             >
-              <TextField source={SERVICE_TITLE_FIELD} />
+              <TextField source={SERVICEENTITY_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField
-              label="Staff Types"
+              label="Staff Type"
               source="stafftype.id"
               reference="StaffType"
             >
@@ -52,13 +52,13 @@ export const StaffTypeShow = (props: ShowProps): React.ReactElement => {
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <TextField label="ID" source="id" />
             <ReferenceField
-              label="Staff Types"
+              label="Staff Type"
               source="stafftype.id"
               reference="StaffType"
             >
               <TextField source={STAFFTYPE_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="Users" source="user.id" reference="User">
+            <ReferenceField label="User" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>

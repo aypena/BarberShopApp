@@ -22,12 +22,12 @@ import { User } from "./User";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserUpdateInput } from "./UserUpdateInput";
-import { AppointmentServiceFindManyArgs } from "../../appointmentService/base/AppointmentServiceFindManyArgs";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
-import { AppointmentServiceWhereUniqueInput } from "../../appointmentService/base/AppointmentServiceWhereUniqueInput";
-import { StaffServiceCustomFindManyArgs } from "../../staffServiceCustom/base/StaffServiceCustomFindManyArgs";
-import { StaffServiceCustom } from "../../staffServiceCustom/base/StaffServiceCustom";
-import { StaffServiceCustomWhereUniqueInput } from "../../staffServiceCustom/base/StaffServiceCustomWhereUniqueInput";
+import { AppointmentServiceItemFindManyArgs } from "../../appointmentServiceItem/base/AppointmentServiceItemFindManyArgs";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
+import { AppointmentServiceItemWhereUniqueInput } from "../../appointmentServiceItem/base/AppointmentServiceItemWhereUniqueInput";
+import { StaffCustomServiceFindManyArgs } from "../../staffCustomService/base/StaffCustomServiceFindManyArgs";
+import { StaffCustomService } from "../../staffCustomService/base/StaffCustomService";
+import { StaffCustomServiceWhereUniqueInput } from "../../staffCustomService/base/StaffCustomServiceWhereUniqueInput";
 import { UserRoleFindManyArgs } from "../../userRole/base/UserRoleFindManyArgs";
 import { UserRole } from "../../userRole/base/UserRole";
 import { UserRoleWhereUniqueInput } from "../../userRole/base/UserRoleWhereUniqueInput";
@@ -160,16 +160,19 @@ export class UserControllerBase {
   }
 
   @common.Get("/:id/appointmentServices")
-  @ApiNestedQuery(AppointmentServiceFindManyArgs)
+  @ApiNestedQuery(AppointmentServiceItemFindManyArgs)
   async findAppointmentServices(
     @common.Req() request: Request,
     @common.Param() params: UserWhereUniqueInput
-  ): Promise<AppointmentService[]> {
-    const query = plainToClass(AppointmentServiceFindManyArgs, request.query);
+  ): Promise<AppointmentServiceItem[]> {
+    const query = plainToClass(
+      AppointmentServiceItemFindManyArgs,
+      request.query
+    );
     const results = await this.service.findAppointmentServices(params.id, {
       ...query,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
@@ -182,13 +185,13 @@ export class UserControllerBase {
         notas: true,
         precioFinal: true,
 
-        services: {
+        serviceEntity: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -206,7 +209,7 @@ export class UserControllerBase {
   @common.Post("/:id/appointmentServices")
   async connectAppointmentServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -223,7 +226,7 @@ export class UserControllerBase {
   @common.Patch("/:id/appointmentServices")
   async updateAppointmentServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -240,7 +243,7 @@ export class UserControllerBase {
   @common.Delete("/:id/appointmentServices")
   async disconnectAppointmentServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: AppointmentServiceWhereUniqueInput[]
+    @common.Body() body: AppointmentServiceItemWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       appointmentServices: {
@@ -254,21 +257,21 @@ export class UserControllerBase {
     });
   }
 
-  @common.Get("/:id/staffServiceCustom")
-  @ApiNestedQuery(StaffServiceCustomFindManyArgs)
-  async findStaffServiceCustom(
+  @common.Get("/:id/staffCustomServices")
+  @ApiNestedQuery(StaffCustomServiceFindManyArgs)
+  async findStaffCustomServices(
     @common.Req() request: Request,
     @common.Param() params: UserWhereUniqueInput
-  ): Promise<StaffServiceCustom[]> {
-    const query = plainToClass(StaffServiceCustomFindManyArgs, request.query);
-    const results = await this.service.findStaffServiceCustom(params.id, {
+  ): Promise<StaffCustomService[]> {
+    const query = plainToClass(StaffCustomServiceFindManyArgs, request.query);
+    const results = await this.service.findStaffCustomServices(params.id, {
       ...query,
       select: {
         duracionCustomMinutos: true,
         id: true,
         precioCustom: true,
 
-        services: {
+        serviceEntity: {
           select: {
             id: true,
           },
@@ -276,7 +279,7 @@ export class UserControllerBase {
 
         updatedAt: true,
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -291,13 +294,13 @@ export class UserControllerBase {
     return results;
   }
 
-  @common.Post("/:id/staffServiceCustom")
-  async connectStaffServiceCustom(
+  @common.Post("/:id/staffCustomServices")
+  async connectStaffCustomServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: StaffServiceCustomWhereUniqueInput[]
+    @common.Body() body: StaffCustomServiceWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      staffServiceCustom: {
+      staffCustomServices: {
         connect: body,
       },
     };
@@ -308,13 +311,13 @@ export class UserControllerBase {
     });
   }
 
-  @common.Patch("/:id/staffServiceCustom")
-  async updateStaffServiceCustom(
+  @common.Patch("/:id/staffCustomServices")
+  async updateStaffCustomServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: StaffServiceCustomWhereUniqueInput[]
+    @common.Body() body: StaffCustomServiceWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      staffServiceCustom: {
+      staffCustomServices: {
         set: body,
       },
     };
@@ -325,13 +328,13 @@ export class UserControllerBase {
     });
   }
 
-  @common.Delete("/:id/staffServiceCustom")
-  async disconnectStaffServiceCustom(
+  @common.Delete("/:id/staffCustomServices")
+  async disconnectStaffCustomServices(
     @common.Param() params: UserWhereUniqueInput,
-    @common.Body() body: StaffServiceCustomWhereUniqueInput[]
+    @common.Body() body: StaffCustomServiceWhereUniqueInput[]
   ): Promise<void> {
     const data = {
-      staffServiceCustom: {
+      staffCustomServices: {
         disconnect: body,
       },
     };
@@ -355,13 +358,13 @@ export class UserControllerBase {
         assignedAt: true,
         id: true,
 
-        roles: {
+        role: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },
@@ -439,13 +442,13 @@ export class UserControllerBase {
       select: {
         id: true,
 
-        staffTypes: {
+        staffType: {
           select: {
             id: true,
           },
         },
 
-        users: {
+        user: {
           select: {
             id: true,
           },

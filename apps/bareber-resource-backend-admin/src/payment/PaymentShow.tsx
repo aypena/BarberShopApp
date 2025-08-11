@@ -13,7 +13,7 @@ export const PaymentShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <ReferenceField
-          label="Appointments"
+          label="Appointment"
           source="appointment.id"
           reference="Appointment"
         >

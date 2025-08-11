@@ -34,22 +34,22 @@ export class NotificationControllerBase {
       data: {
         ...data,
 
-        appointments: {
-          connect: data.appointments,
+        appointment: {
+          connect: data.appointment,
         },
 
-        clients: {
-          connect: data.clients,
+        client: {
+          connect: data.client,
         },
       },
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
         },
 
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -74,13 +74,13 @@ export class NotificationControllerBase {
     return this.service.notifications({
       ...args,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
         },
 
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -106,13 +106,13 @@ export class NotificationControllerBase {
     const result = await this.service.notification({
       where: params,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
         },
 
-        clients: {
+        client: {
           select: {
             id: true,
           },
@@ -148,22 +148,22 @@ export class NotificationControllerBase {
         data: {
           ...data,
 
-          appointments: {
-            connect: data.appointments,
+          appointment: {
+            connect: data.appointment,
           },
 
-          clients: {
-            connect: data.clients,
+          client: {
+            connect: data.client,
           },
         },
         select: {
-          appointments: {
+          appointment: {
             select: {
               id: true,
             },
           },
 
-          clients: {
+          client: {
             select: {
               id: true,
             },
@@ -198,13 +198,13 @@ export class NotificationControllerBase {
       return await this.service.deleteNotification({
         where: params,
         select: {
-          appointments: {
+          appointment: {
             select: {
               id: true,
             },
           },
 
-          clients: {
+          client: {
             select: {
               id: true,
             },

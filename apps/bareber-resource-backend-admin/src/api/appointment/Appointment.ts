@@ -1,11 +1,11 @@
-import { AppointmentService } from "../appointmentService/AppointmentService";
+import { AppointmentServiceItem } from "../appointmentServiceItem/AppointmentServiceItem";
 import { Client } from "../client/Client";
 import { Notification } from "../notification/Notification";
 import { Payment } from "../payment/Payment";
 
 export type Appointment = {
-  appointmentServices?: Array<AppointmentService>;
-  clients?: Client;
+  appointmentServices?: Array<AppointmentServiceItem>;
+  client?: Client;
   createdAt: Date | null;
   estado: string | null;
   fechaFin: Date | null;

@@ -1,21 +1,21 @@
 import { BooleanNullableFilter } from "../../util/BooleanNullableFilter";
-import { AppointmentServiceListRelationFilter } from "../appointmentService/AppointmentServiceListRelationFilter";
+import { AppointmentServiceItemListRelationFilter } from "../appointmentServiceItem/AppointmentServiceItemListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { StaffServiceCustomListRelationFilter } from "../staffServiceCustom/StaffServiceCustomListRelationFilter";
+import { StaffCustomServiceListRelationFilter } from "../staffCustomService/StaffCustomServiceListRelationFilter";
 import { UserRoleListRelationFilter } from "../userRole/UserRoleListRelationFilter";
 import { UserStaffTypeListRelationFilter } from "../userStaffType/UserStaffTypeListRelationFilter";
 
 export type UserWhereInput = {
   activo?: BooleanNullableFilter;
-  appointmentServices?: AppointmentServiceListRelationFilter;
+  appointmentServices?: AppointmentServiceItemListRelationFilter;
   email?: StringNullableFilter;
   fechaRegistro?: DateTimeNullableFilter;
   id?: StringFilter;
   nombre?: StringNullableFilter;
   passwordHash?: StringNullableFilter;
-  staffServiceCustom?: StaffServiceCustomListRelationFilter;
+  staffCustomServices?: StaffCustomServiceListRelationFilter;
   telefono?: StringNullableFilter;
   userRoles?: UserRoleListRelationFilter;
   userStaffTypes?: UserStaffTypeListRelationFilter;

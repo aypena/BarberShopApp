@@ -6,6 +6,6 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 export type UserRoleWhereInput = {
   assignedAt?: DateTimeNullableFilter;
   id?: StringFilter;
-  roles?: RoleWhereUniqueInput;
-  users?: UserWhereUniqueInput;
+  role?: RoleWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

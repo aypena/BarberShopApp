@@ -14,14 +14,14 @@ import { GraphQLError } from "graphql";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { Appointment } from "./Appointment";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
 import { AppointmentCountArgs } from "./AppointmentCountArgs";
 import { AppointmentFindManyArgs } from "./AppointmentFindManyArgs";
 import { AppointmentFindUniqueArgs } from "./AppointmentFindUniqueArgs";
 import { CreateAppointmentArgs } from "./CreateAppointmentArgs";
 import { UpdateAppointmentArgs } from "./UpdateAppointmentArgs";
 import { DeleteAppointmentArgs } from "./DeleteAppointmentArgs";
-import { AppointmentServiceFindManyArgs } from "../../appointmentService/base/AppointmentServiceFindManyArgs";
+import { AppointmentServiceItemFindManyArgs } from "../../appointmentServiceItem/base/AppointmentServiceItemFindManyArgs";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
 import { NotificationFindManyArgs } from "../../notification/base/NotificationFindManyArgs";
 import { Notification } from "../../notification/base/Notification";
 import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
@@ -68,8 +68,8 @@ export class AppointmentResolverBase {
       data: {
         ...args.data,
 
-        clients: {
-          connect: args.data.clients,
+        client: {
+          connect: args.data.client,
         },
       },
     });
@@ -85,8 +85,8 @@ export class AppointmentResolverBase {
         data: {
           ...args.data,
 
-          clients: {
-            connect: args.data.clients,
+          client: {
+            connect: args.data.client,
           },
         },
       });
@@ -116,13 +116,13 @@ export class AppointmentResolverBase {
     }
   }
 
-  @graphql.ResolveField(() => [AppointmentService], {
+  @graphql.ResolveField(() => [AppointmentServiceItem], {
     name: "appointmentServices",
   })
   async findAppointmentServices(
     @graphql.Parent() parent: Appointment,
-    @graphql.Args() args: AppointmentServiceFindManyArgs
-  ): Promise<AppointmentService[]> {
+    @graphql.Args() args: AppointmentServiceItemFindManyArgs
+  ): Promise<AppointmentServiceItem[]> {
     const results = await this.service.findAppointmentServices(parent.id, args);
 
     if (!results) {
@@ -162,12 +162,12 @@ export class AppointmentResolverBase {
 
   @graphql.ResolveField(() => Client, {
     nullable: true,
-    name: "clients",
+    name: "client",
   })
-  async getClients(
+  async getClient(
     @graphql.Parent() parent: Appointment
   ): Promise<Client | null> {
-    const result = await this.service.getClients(parent.id);
+    const result = await this.service.getClient(parent.id);
 
     if (!result) {
       return null;

@@ -40,7 +40,7 @@ class UserStaffTypeWhereInput {
   @Field(() => StaffTypeWhereUniqueInput, {
     nullable: true,
   })
-  staffTypes?: StaffTypeWhereUniqueInput;
+  staffType?: StaffTypeWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -52,7 +52,7 @@ class UserStaffTypeWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  users?: UserWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 }
 
 export { UserStaffTypeWhereInput as UserStaffTypeWhereInput };

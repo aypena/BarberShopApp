@@ -1,4 +1,4 @@
-import { AppointmentServiceListRelationFilter } from "../appointmentService/AppointmentServiceListRelationFilter";
+import { AppointmentServiceItemListRelationFilter } from "../appointmentServiceItem/AppointmentServiceItemListRelationFilter";
 import { ClientWhereUniqueInput } from "../client/ClientWhereUniqueInput";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
@@ -7,8 +7,8 @@ import { NotificationListRelationFilter } from "../notification/NotificationList
 import { PaymentListRelationFilter } from "../payment/PaymentListRelationFilter";
 
 export type AppointmentWhereInput = {
-  appointmentServices?: AppointmentServiceListRelationFilter;
-  clients?: ClientWhereUniqueInput;
+  appointmentServices?: AppointmentServiceItemListRelationFilter;
+  client?: ClientWhereUniqueInput;
   createdAt?: DateTimeNullableFilter;
   estado?: StringNullableFilter;
   fechaFin?: DateTimeNullableFilter;

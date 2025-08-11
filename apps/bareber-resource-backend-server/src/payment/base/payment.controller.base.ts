@@ -34,12 +34,12 @@ export class PaymentControllerBase {
       data: {
         ...data,
 
-        appointments: {
-          connect: data.appointments,
+        appointment: {
+          connect: data.appointment,
         },
       },
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
@@ -63,7 +63,7 @@ export class PaymentControllerBase {
     return this.service.payments({
       ...args,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
@@ -88,7 +88,7 @@ export class PaymentControllerBase {
     const result = await this.service.payment({
       where: params,
       select: {
-        appointments: {
+        appointment: {
           select: {
             id: true,
           },
@@ -123,12 +123,12 @@ export class PaymentControllerBase {
         data: {
           ...data,
 
-          appointments: {
-            connect: data.appointments,
+          appointment: {
+            connect: data.appointment,
           },
         },
         select: {
-          appointments: {
+          appointment: {
             select: {
               id: true,
             },
@@ -162,7 +162,7 @@ export class PaymentControllerBase {
       return await this.service.deletePayment({
         where: params,
         select: {
-          appointments: {
+          appointment: {
             select: {
               id: true,
             },

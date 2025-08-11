@@ -19,9 +19,9 @@ import {
   MaxLength,
   IsDate,
 } from "class-validator";
-import { AppointmentService } from "../../appointmentService/base/AppointmentService";
+import { AppointmentServiceItem } from "../../appointmentServiceItem/base/AppointmentServiceItem";
 import { Type } from "class-transformer";
-import { StaffServiceCustom } from "../../staffServiceCustom/base/StaffServiceCustom";
+import { StaffCustomService } from "../../staffCustomService/base/StaffCustomService";
 import { UserRole } from "../../userRole/base/UserRole";
 import { UserStaffType } from "../../userStaffType/base/UserStaffType";
 
@@ -40,12 +40,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [AppointmentService],
+    type: () => [AppointmentServiceItem],
   })
   @ValidateNested()
-  @Type(() => AppointmentService)
+  @Type(() => AppointmentServiceItem)
   @IsOptional()
-  appointmentServices?: Array<AppointmentService>;
+  appointmentServices?: Array<AppointmentServiceItem>;
 
   @ApiProperty({
     required: false,
@@ -104,12 +104,12 @@ class User {
 
   @ApiProperty({
     required: false,
-    type: () => [StaffServiceCustom],
+    type: () => [StaffCustomService],
   })
   @ValidateNested()
-  @Type(() => StaffServiceCustom)
+  @Type(() => StaffCustomService)
   @IsOptional()
-  staffServiceCustom?: Array<StaffServiceCustom>;
+  staffCustomServices?: Array<StaffCustomService>;
 
   @ApiProperty({
     required: false,

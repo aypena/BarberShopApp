@@ -11,8 +11,8 @@ import {
   DateTimeInput,
 } from "react-admin";
 
-import { AppointmentServiceTitle } from "../appointmentService/AppointmentServiceTitle";
-import { StaffServiceCustomTitle } from "../staffServiceCustom/StaffServiceCustomTitle";
+import { AppointmentServiceItemTitle } from "../appointmentServiceItem/AppointmentServiceItemTitle";
+import { StaffCustomServiceTitle } from "../staffCustomService/StaffCustomServiceTitle";
 import { UserRoleTitle } from "../userRole/UserRoleTitle";
 import { UserStaffTypeTitle } from "../userStaffType/UserStaffTypeTitle";
 
@@ -23,10 +23,10 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         <BooleanInput label="Activo" source="activo" />
         <ReferenceArrayInput
           source="appointmentServices"
-          reference="AppointmentService"
+          reference="AppointmentServiceItem"
         >
           <SelectArrayInput
-            optionText={AppointmentServiceTitle}
+            optionText={AppointmentServiceItemTitle}
             parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
             format={(value: any) => value && value.map((v: any) => v.id)}
           />
@@ -36,11 +36,11 @@ export const UserCreate = (props: CreateProps): React.ReactElement => {
         <TextInput label="Nombre" source="nombre" />
         <TextInput label="Password Hash" source="passwordHash" />
         <ReferenceArrayInput
-          source="staffServiceCustom"
-          reference="StaffServiceCustom"
+          source="staffCustomServices"
+          reference="StaffCustomService"
         >
           <SelectArrayInput
-            optionText={StaffServiceCustomTitle}
+            optionText={StaffCustomServiceTitle}
             parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
             format={(value: any) => value && value.map((v: any) => v.id)}
           />

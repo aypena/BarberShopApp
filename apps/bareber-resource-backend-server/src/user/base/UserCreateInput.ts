@@ -19,9 +19,9 @@ import {
   MaxLength,
   IsDate,
 } from "class-validator";
-import { AppointmentServiceCreateNestedManyWithoutUsersInput } from "./AppointmentServiceCreateNestedManyWithoutUsersInput";
+import { AppointmentServiceItemCreateNestedManyWithoutUsersInput } from "./AppointmentServiceItemCreateNestedManyWithoutUsersInput";
 import { Type } from "class-transformer";
-import { StaffServiceCustomCreateNestedManyWithoutUsersInput } from "./StaffServiceCustomCreateNestedManyWithoutUsersInput";
+import { StaffCustomServiceCreateNestedManyWithoutUsersInput } from "./StaffCustomServiceCreateNestedManyWithoutUsersInput";
 import { UserRoleCreateNestedManyWithoutUsersInput } from "./UserRoleCreateNestedManyWithoutUsersInput";
 import { UserStaffTypeCreateNestedManyWithoutUsersInput } from "./UserStaffTypeCreateNestedManyWithoutUsersInput";
 
@@ -40,15 +40,15 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceCreateNestedManyWithoutUsersInput,
+    type: () => AppointmentServiceItemCreateNestedManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceCreateNestedManyWithoutUsersInput)
+  @Type(() => AppointmentServiceItemCreateNestedManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => AppointmentServiceCreateNestedManyWithoutUsersInput, {
+  @Field(() => AppointmentServiceItemCreateNestedManyWithoutUsersInput, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceCreateNestedManyWithoutUsersInput;
+  appointmentServices?: AppointmentServiceItemCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
@@ -99,15 +99,15 @@ class UserCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => StaffServiceCustomCreateNestedManyWithoutUsersInput,
+    type: () => StaffCustomServiceCreateNestedManyWithoutUsersInput,
   })
   @ValidateNested()
-  @Type(() => StaffServiceCustomCreateNestedManyWithoutUsersInput)
+  @Type(() => StaffCustomServiceCreateNestedManyWithoutUsersInput)
   @IsOptional()
-  @Field(() => StaffServiceCustomCreateNestedManyWithoutUsersInput, {
+  @Field(() => StaffCustomServiceCreateNestedManyWithoutUsersInput, {
     nullable: true,
   })
-  staffServiceCustom?: StaffServiceCustomCreateNestedManyWithoutUsersInput;
+  staffCustomServices?: StaffCustomServiceCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

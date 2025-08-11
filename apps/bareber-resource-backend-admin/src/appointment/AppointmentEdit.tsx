@@ -12,7 +12,7 @@ import {
   TextInput,
 } from "react-admin";
 
-import { AppointmentServiceTitle } from "../appointmentService/AppointmentServiceTitle";
+import { AppointmentServiceItemTitle } from "../appointmentServiceItem/AppointmentServiceItemTitle";
 import { ClientTitle } from "../client/ClientTitle";
 import { NotificationTitle } from "../notification/NotificationTitle";
 import { PaymentTitle } from "../payment/PaymentTitle";
@@ -23,15 +23,15 @@ export const AppointmentEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <ReferenceArrayInput
           source="appointmentServices"
-          reference="AppointmentService"
+          reference="AppointmentServiceItem"
         >
           <SelectArrayInput
-            optionText={AppointmentServiceTitle}
+            optionText={AppointmentServiceItemTitle}
             parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
             format={(value: any) => value && value.map((v: any) => v.id)}
           />
         </ReferenceArrayInput>
-        <ReferenceInput source="clients.id" reference="Client" label="Clients">
+        <ReferenceInput source="client.id" reference="Client" label="Client">
           <SelectInput optionText={ClientTitle} />
         </ReferenceInput>
         <DateTimeInput label="Created At" source="createdAt" />

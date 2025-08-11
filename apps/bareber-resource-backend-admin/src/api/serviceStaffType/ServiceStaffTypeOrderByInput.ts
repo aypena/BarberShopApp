@@ -1,7 +1,0 @@
-import { SortOrder } from "../../util/SortOrder";
-
-export type ServiceStaffTypeOrderByInput = {
-  id?: SortOrder;
-  service_id?: SortOrder;
-  staff_type_id?: SortOrder;
-};

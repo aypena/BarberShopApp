@@ -36,7 +36,7 @@ class UserRoleCreateInput {
   @ValidateNested()
   @Type(() => RoleWhereUniqueInput)
   @Field(() => RoleWhereUniqueInput)
-  roles!: RoleWhereUniqueInput;
+  role!: RoleWhereUniqueInput;
 
   @ApiProperty({
     required: true,
@@ -45,7 +45,7 @@ class UserRoleCreateInput {
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
   @Field(() => UserWhereUniqueInput)
-  users!: UserWhereUniqueInput;
+  user!: UserWhereUniqueInput;
 }
 
 export { UserRoleCreateInput as UserRoleCreateInput };

@@ -1,9 +1,9 @@
-import { ServiceStaffTypeUpdateManyWithoutStaffTypesInput } from "./ServiceStaffTypeUpdateManyWithoutStaffTypesInput";
+import { ServiceStaffLinkUpdateManyWithoutStaffTypesInput } from "./ServiceStaffLinkUpdateManyWithoutStaffTypesInput";
 import { UserStaffTypeUpdateManyWithoutStaffTypesInput } from "./UserStaffTypeUpdateManyWithoutStaffTypesInput";
 
 export type StaffTypeUpdateInput = {
   descripcion?: string | null;
   nombre?: string | null;
-  serviceStaffTypes?: ServiceStaffTypeUpdateManyWithoutStaffTypesInput;
+  serviceStaffLinks?: ServiceStaffLinkUpdateManyWithoutStaffTypesInput;
   userStaffTypes?: UserStaffTypeUpdateManyWithoutStaffTypesInput;
 };

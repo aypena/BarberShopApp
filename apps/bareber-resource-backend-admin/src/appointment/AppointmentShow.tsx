@@ -11,7 +11,7 @@ import {
 } from "react-admin";
 
 import { APPOINTMENT_TITLE_FIELD } from "./AppointmentTitle";
-import { SERVICE_TITLE_FIELD } from "../service/ServiceTitle";
+import { SERVICEENTITY_TITLE_FIELD } from "../serviceEntity/ServiceEntityTitle";
 import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { CLIENT_TITLE_FIELD } from "../client/ClientTitle";
 
@@ -19,7 +19,7 @@ export const AppointmentShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <ReferenceField label="Clients" source="client.id" reference="Client">
+        <ReferenceField label="Client" source="client.id" reference="Client">
           <TextField source={CLIENT_TITLE_FIELD} />
         </ReferenceField>
         <TextField label="Created At" source="createdAt" />
@@ -30,13 +30,13 @@ export const AppointmentShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Notas" source="notas" />
         <TextField label="Updated At" source="updatedAt" />
         <ReferenceManyField
-          reference="AppointmentService"
+          reference="AppointmentServiceItem"
           target="appointment_id"
-          label="AppointmentServices"
+          label="AppointmentServiceItems"
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <ReferenceField
-              label="Appointments"
+              label="Appointment"
               source="appointment.id"
               reference="Appointment"
             >
@@ -52,13 +52,13 @@ export const AppointmentShow = (props: ShowProps): React.ReactElement => {
             <TextField label="Notas" source="notas" />
             <TextField label="Precio Final" source="precioFinal" />
             <ReferenceField
-              label="Services"
-              source="service.id"
-              reference="Service"
+              label="Service Entity"
+              source="serviceentity.id"
+              reference="ServiceEntity"
             >
-              <TextField source={SERVICE_TITLE_FIELD} />
+              <TextField source={SERVICEENTITY_TITLE_FIELD} />
             </ReferenceField>
-            <ReferenceField label="Users" source="user.id" reference="User">
+            <ReferenceField label="User" source="user.id" reference="User">
               <TextField source={USER_TITLE_FIELD} />
             </ReferenceField>
           </Datagrid>
@@ -70,14 +70,14 @@ export const AppointmentShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <ReferenceField
-              label="Appointments"
+              label="Appointment"
               source="appointment.id"
               reference="Appointment"
             >
               <TextField source={APPOINTMENT_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField
-              label="Clients"
+              label="Client"
               source="client.id"
               reference="Client"
             >
@@ -99,7 +99,7 @@ export const AppointmentShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <ReferenceField
-              label="Appointments"
+              label="Appointment"
               source="appointment.id"
               reference="Appointment"
             >

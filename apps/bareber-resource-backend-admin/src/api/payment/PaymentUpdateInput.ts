@@ -3,7 +3,7 @@ import { InputJsonValue } from "../../types";
 import { Decimal } from "decimal.js";
 
 export type PaymentUpdateInput = {
-  appointments?: AppointmentWhereUniqueInput;
+  appointment?: AppointmentWhereUniqueInput;
   createdAt?: Date | null;
   detallePago?: InputJsonValue;
   fechaPago?: Date | null;

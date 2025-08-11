@@ -1,7 +1,6 @@
 import * as graphql from "@nestjs/graphql";
 import { AppointmentResolverBase } from "./base/appointment.resolver.base";
 import { Appointment } from "./base/Appointment";
-import { AppointmentService } from "../appointmentService/base/AppointmentService";
 import { AppointmentService } from "./appointment.service";
 
 @graphql.Resolver(() => Appointment)

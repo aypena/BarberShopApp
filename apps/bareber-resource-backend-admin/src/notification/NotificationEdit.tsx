@@ -18,13 +18,13 @@ export const NotificationEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <ReferenceInput
-          source="appointments.id"
+          source="appointment.id"
           reference="Appointment"
-          label="Appointments"
+          label="Appointment"
         >
           <SelectInput optionText={AppointmentTitle} />
         </ReferenceInput>
-        <ReferenceInput source="clients.id" reference="Client" label="Clients">
+        <ReferenceInput source="client.id" reference="Client" label="Client">
           <SelectInput optionText={ClientTitle} />
         </ReferenceInput>
         <DateTimeInput label="Created At" source="createdAt" />

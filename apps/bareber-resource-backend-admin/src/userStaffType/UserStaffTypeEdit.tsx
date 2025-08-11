@@ -14,13 +14,13 @@ export const UserStaffTypeEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <ReferenceInput
-          source="staffTypes.id"
+          source="staffType.id"
           reference="StaffType"
-          label="Staff Types"
+          label="Staff Type"
         >
           <SelectInput optionText={StaffTypeTitle} />
         </ReferenceInput>
-        <ReferenceInput source="users.id" reference="User" label="Users">
+        <ReferenceInput source="user.id" reference="User" label="User">
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
       </SimpleForm>

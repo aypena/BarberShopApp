@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   StaffType as PrismaStaffType,
-  ServiceStaffType as PrismaServiceStaffType,
+  ServiceStaffLink as PrismaServiceStaffLink,
   UserStaffType as PrismaUserStaffType,
 } from "@prisma/client";
 
@@ -53,15 +53,15 @@ export class StaffTypeServiceBase {
     return this.prisma.staffType.delete(args);
   }
 
-  async findServiceStaffTypes(
+  async findServiceStaffLinks(
     parentId: string,
-    args: Prisma.ServiceStaffTypeFindManyArgs
-  ): Promise<PrismaServiceStaffType[]> {
+    args: Prisma.ServiceStaffLinkFindManyArgs
+  ): Promise<PrismaServiceStaffLink[]> {
     return this.prisma.staffType
       .findUniqueOrThrow({
         where: { id: parentId },
       })
-      .serviceStaffTypes(args);
+      .serviceStaffLinks(args);
   }
 
   async findUserStaffTypes(

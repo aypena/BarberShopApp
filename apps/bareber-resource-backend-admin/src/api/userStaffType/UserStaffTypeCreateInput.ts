@@ -2,6 +2,6 @@ import { StaffTypeWhereUniqueInput } from "../staffType/StaffTypeWhereUniqueInpu
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type UserStaffTypeCreateInput = {
-  staffTypes: StaffTypeWhereUniqueInput;
-  users: UserWhereUniqueInput;
+  staffType: StaffTypeWhereUniqueInput;
+  user: UserWhereUniqueInput;
 };

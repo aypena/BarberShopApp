@@ -14,7 +14,7 @@ import { PrismaService } from "../../prisma/prisma.service";
 import {
   Prisma,
   Appointment as PrismaAppointment,
-  AppointmentService as PrismaAppointmentService,
+  AppointmentServiceItem as PrismaAppointmentServiceItem,
   Notification as PrismaNotification,
   Payment as PrismaPayment,
   Client as PrismaClient,
@@ -57,8 +57,8 @@ export class AppointmentServiceBase {
 
   async findAppointmentServices(
     parentId: string,
-    args: Prisma.AppointmentServiceFindManyArgs
-  ): Promise<PrismaAppointmentService[]> {
+    args: Prisma.AppointmentServiceItemFindManyArgs
+  ): Promise<PrismaAppointmentServiceItem[]> {
     return this.prisma.appointment
       .findUniqueOrThrow({
         where: { id: parentId },
@@ -88,11 +88,11 @@ export class AppointmentServiceBase {
       .payments(args);
   }
 
-  async getClients(parentId: string): Promise<PrismaClient | null> {
+  async getClient(parentId: string): Promise<PrismaClient | null> {
     return this.prisma.appointment
       .findUnique({
         where: { id: parentId },
       })
-      .clients();
+      .client();
   }
 }

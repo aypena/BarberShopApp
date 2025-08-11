@@ -5,14 +5,14 @@ import { theme } from "./theme/theme";
 import Login from "./Login";
 import "./App.scss";
 import Dashboard from "./pages/Dashboard";
-import { UserList } from "./user/UserList";
-import { UserCreate } from "./user/UserCreate";
-import { UserEdit } from "./user/UserEdit";
-import { UserShow } from "./user/UserShow";
 import { RoleList } from "./role/RoleList";
 import { RoleCreate } from "./role/RoleCreate";
 import { RoleEdit } from "./role/RoleEdit";
 import { RoleShow } from "./role/RoleShow";
+import { UserList } from "./user/UserList";
+import { UserCreate } from "./user/UserCreate";
+import { UserEdit } from "./user/UserEdit";
+import { UserShow } from "./user/UserShow";
 import { UserRoleList } from "./userRole/UserRoleList";
 import { UserRoleCreate } from "./userRole/UserRoleCreate";
 import { UserRoleEdit } from "./userRole/UserRoleEdit";
@@ -25,18 +25,18 @@ import { UserStaffTypeList } from "./userStaffType/UserStaffTypeList";
 import { UserStaffTypeCreate } from "./userStaffType/UserStaffTypeCreate";
 import { UserStaffTypeEdit } from "./userStaffType/UserStaffTypeEdit";
 import { UserStaffTypeShow } from "./userStaffType/UserStaffTypeShow";
-import { ServiceList } from "./service/ServiceList";
-import { ServiceCreate } from "./service/ServiceCreate";
-import { ServiceEdit } from "./service/ServiceEdit";
-import { ServiceShow } from "./service/ServiceShow";
-import { ServiceStaffTypeList } from "./serviceStaffType/ServiceStaffTypeList";
-import { ServiceStaffTypeCreate } from "./serviceStaffType/ServiceStaffTypeCreate";
-import { ServiceStaffTypeEdit } from "./serviceStaffType/ServiceStaffTypeEdit";
-import { ServiceStaffTypeShow } from "./serviceStaffType/ServiceStaffTypeShow";
-import { StaffServiceCustomList } from "./staffServiceCustom/StaffServiceCustomList";
-import { StaffServiceCustomCreate } from "./staffServiceCustom/StaffServiceCustomCreate";
-import { StaffServiceCustomEdit } from "./staffServiceCustom/StaffServiceCustomEdit";
-import { StaffServiceCustomShow } from "./staffServiceCustom/StaffServiceCustomShow";
+import { ServiceEntityList } from "./serviceEntity/ServiceEntityList";
+import { ServiceEntityCreate } from "./serviceEntity/ServiceEntityCreate";
+import { ServiceEntityEdit } from "./serviceEntity/ServiceEntityEdit";
+import { ServiceEntityShow } from "./serviceEntity/ServiceEntityShow";
+import { ServiceStaffLinkList } from "./serviceStaffLink/ServiceStaffLinkList";
+import { ServiceStaffLinkCreate } from "./serviceStaffLink/ServiceStaffLinkCreate";
+import { ServiceStaffLinkEdit } from "./serviceStaffLink/ServiceStaffLinkEdit";
+import { ServiceStaffLinkShow } from "./serviceStaffLink/ServiceStaffLinkShow";
+import { StaffCustomServiceList } from "./staffCustomService/StaffCustomServiceList";
+import { StaffCustomServiceCreate } from "./staffCustomService/StaffCustomServiceCreate";
+import { StaffCustomServiceEdit } from "./staffCustomService/StaffCustomServiceEdit";
+import { StaffCustomServiceShow } from "./staffCustomService/StaffCustomServiceShow";
 import { ClientList } from "./client/ClientList";
 import { ClientCreate } from "./client/ClientCreate";
 import { ClientEdit } from "./client/ClientEdit";
@@ -45,10 +45,10 @@ import { AppointmentList } from "./appointment/AppointmentList";
 import { AppointmentCreate } from "./appointment/AppointmentCreate";
 import { AppointmentEdit } from "./appointment/AppointmentEdit";
 import { AppointmentShow } from "./appointment/AppointmentShow";
-import { AppointmentServiceList } from "./appointmentService/AppointmentServiceList";
-import { AppointmentServiceCreate } from "./appointmentService/AppointmentServiceCreate";
-import { AppointmentServiceEdit } from "./appointmentService/AppointmentServiceEdit";
-import { AppointmentServiceShow } from "./appointmentService/AppointmentServiceShow";
+import { AppointmentServiceItemList } from "./appointmentServiceItem/AppointmentServiceItemList";
+import { AppointmentServiceItemCreate } from "./appointmentServiceItem/AppointmentServiceItemCreate";
+import { AppointmentServiceItemEdit } from "./appointmentServiceItem/AppointmentServiceItemEdit";
+import { AppointmentServiceItemShow } from "./appointmentServiceItem/AppointmentServiceItemShow";
 import { PaymentList } from "./payment/PaymentList";
 import { PaymentCreate } from "./payment/PaymentCreate";
 import { PaymentEdit } from "./payment/PaymentEdit";
@@ -79,18 +79,18 @@ const App = (): React.ReactElement => {
         loginPage={Login}
       >
         <Resource
-          name="User"
-          list={UserList}
-          edit={UserEdit}
-          create={UserCreate}
-          show={UserShow}
-        />
-        <Resource
           name="Role"
           list={RoleList}
           edit={RoleEdit}
           create={RoleCreate}
           show={RoleShow}
+        />
+        <Resource
+          name="User"
+          list={UserList}
+          edit={UserEdit}
+          create={UserCreate}
+          show={UserShow}
         />
         <Resource
           name="UserRole"
@@ -114,25 +114,25 @@ const App = (): React.ReactElement => {
           show={UserStaffTypeShow}
         />
         <Resource
-          name="Service"
-          list={ServiceList}
-          edit={ServiceEdit}
-          create={ServiceCreate}
-          show={ServiceShow}
+          name="ServiceEntity"
+          list={ServiceEntityList}
+          edit={ServiceEntityEdit}
+          create={ServiceEntityCreate}
+          show={ServiceEntityShow}
         />
         <Resource
-          name="ServiceStaffType"
-          list={ServiceStaffTypeList}
-          edit={ServiceStaffTypeEdit}
-          create={ServiceStaffTypeCreate}
-          show={ServiceStaffTypeShow}
+          name="ServiceStaffLink"
+          list={ServiceStaffLinkList}
+          edit={ServiceStaffLinkEdit}
+          create={ServiceStaffLinkCreate}
+          show={ServiceStaffLinkShow}
         />
         <Resource
-          name="StaffServiceCustom"
-          list={StaffServiceCustomList}
-          edit={StaffServiceCustomEdit}
-          create={StaffServiceCustomCreate}
-          show={StaffServiceCustomShow}
+          name="StaffCustomService"
+          list={StaffCustomServiceList}
+          edit={StaffCustomServiceEdit}
+          create={StaffCustomServiceCreate}
+          show={StaffCustomServiceShow}
         />
         <Resource
           name="Client"
@@ -149,11 +149,11 @@ const App = (): React.ReactElement => {
           show={AppointmentShow}
         />
         <Resource
-          name="AppointmentService"
-          list={AppointmentServiceList}
-          edit={AppointmentServiceEdit}
-          create={AppointmentServiceCreate}
-          show={AppointmentServiceShow}
+          name="AppointmentServiceItem"
+          list={AppointmentServiceItemList}
+          edit={AppointmentServiceItemEdit}
+          create={AppointmentServiceItemCreate}
+          show={AppointmentServiceItemShow}
         />
         <Resource
           name="Payment"

@@ -53,19 +53,19 @@ export class UserStaffTypeServiceBase {
     return this.prisma.userStaffType.delete(args);
   }
 
-  async getStaffTypes(parentId: string): Promise<PrismaStaffType | null> {
+  async getStaffType(parentId: string): Promise<PrismaStaffType | null> {
     return this.prisma.userStaffType
       .findUnique({
         where: { id: parentId },
       })
-      .staffTypes();
+      .staffType();
   }
 
-  async getUsers(parentId: string): Promise<PrismaUser | null> {
+  async getUser(parentId: string): Promise<PrismaUser | null> {
     return this.prisma.userStaffType
       .findUnique({
         where: { id: parentId },
       })
-      .users();
+      .user();
   }
 }

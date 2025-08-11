@@ -35,7 +35,7 @@ class Payment {
   })
   @ValidateNested()
   @Type(() => Appointment)
-  appointments?: Appointment;
+  appointment?: Appointment;
 
   @ApiProperty({
     required: false,

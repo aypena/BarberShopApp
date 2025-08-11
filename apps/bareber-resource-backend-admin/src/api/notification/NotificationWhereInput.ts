@@ -5,8 +5,8 @@ import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 
 export type NotificationWhereInput = {
-  appointments?: AppointmentWhereUniqueInput;
-  clients?: ClientWhereUniqueInput;
+  appointment?: AppointmentWhereUniqueInput;
+  client?: ClientWhereUniqueInput;
   createdAt?: DateTimeNullableFilter;
   estado?: StringNullableFilter;
   fechaEnvio?: DateTimeNullableFilter;

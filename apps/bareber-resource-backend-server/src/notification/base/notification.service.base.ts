@@ -53,19 +53,19 @@ export class NotificationServiceBase {
     return this.prisma.notification.delete(args);
   }
 
-  async getAppointments(parentId: string): Promise<PrismaAppointment | null> {
+  async getAppointment(parentId: string): Promise<PrismaAppointment | null> {
     return this.prisma.notification
       .findUnique({
         where: { id: parentId },
       })
-      .appointments();
+      .appointment();
   }
 
-  async getClients(parentId: string): Promise<PrismaClient | null> {
+  async getClient(parentId: string): Promise<PrismaClient | null> {
     return this.prisma.notification
       .findUnique({
         where: { id: parentId },
       })
-      .clients();
+      .client();
   }
 }

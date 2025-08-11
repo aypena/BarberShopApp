@@ -30,7 +30,7 @@ export const ClientShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <ReferenceField
-              label="Clients"
+              label="Client"
               source="client.id"
               reference="Client"
             >
@@ -52,14 +52,14 @@ export const ClientShow = (props: ShowProps): React.ReactElement => {
         >
           <Datagrid rowClick="show" bulkActionButtons={false}>
             <ReferenceField
-              label="Appointments"
+              label="Appointment"
               source="appointment.id"
               reference="Appointment"
             >
               <TextField source={APPOINTMENT_TITLE_FIELD} />
             </ReferenceField>
             <ReferenceField
-              label="Clients"
+              label="Client"
               source="client.id"
               reference="Client"
             >

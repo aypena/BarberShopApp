@@ -4,6 +4,6 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type UserStaffTypeWhereInput = {
   id?: StringFilter;
-  staffTypes?: StaffTypeWhereUniqueInput;
-  users?: UserWhereUniqueInput;
+  staffType?: StaffTypeWhereUniqueInput;
+  user?: UserWhereUniqueInput;
 };

@@ -11,7 +11,7 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { AppointmentServiceUpdateManyWithoutAppointmentsInput } from "./AppointmentServiceUpdateManyWithoutAppointmentsInput";
+import { AppointmentServiceItemUpdateManyWithoutAppointmentsInput } from "./AppointmentServiceItemUpdateManyWithoutAppointmentsInput";
 import {
   ValidateNested,
   IsOptional,
@@ -28,15 +28,15 @@ import { PaymentUpdateManyWithoutAppointmentsInput } from "./PaymentUpdateManyWi
 class AppointmentUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => AppointmentServiceUpdateManyWithoutAppointmentsInput,
+    type: () => AppointmentServiceItemUpdateManyWithoutAppointmentsInput,
   })
   @ValidateNested()
-  @Type(() => AppointmentServiceUpdateManyWithoutAppointmentsInput)
+  @Type(() => AppointmentServiceItemUpdateManyWithoutAppointmentsInput)
   @IsOptional()
-  @Field(() => AppointmentServiceUpdateManyWithoutAppointmentsInput, {
+  @Field(() => AppointmentServiceItemUpdateManyWithoutAppointmentsInput, {
     nullable: true,
   })
-  appointmentServices?: AppointmentServiceUpdateManyWithoutAppointmentsInput;
+  appointmentServices?: AppointmentServiceItemUpdateManyWithoutAppointmentsInput;
 
   @ApiProperty({
     required: false,
@@ -48,7 +48,7 @@ class AppointmentUpdateInput {
   @Field(() => ClientWhereUniqueInput, {
     nullable: true,
   })
-  clients?: ClientWhereUniqueInput;
+  client?: ClientWhereUniqueInput;
 
   @ApiProperty({
     required: false,
