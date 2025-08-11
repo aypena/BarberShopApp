@@ -9,7 +9,7 @@ generator client {
 
 model User {
   activo              Boolean?
-  appointmentServices AppointmentService[]
+  appointmentServices AppointmentServiceLink[]
   email               String?              @unique
   fechaRegistro       DateTime?            @map("fecha_registro") @db.Timestamp(6)
   id                  String               @id @default(cuid()) @db.Uuid
@@ -63,9 +63,9 @@ model UserStaffType {
   @@map("user_staff_types")
 }
 
-model Service {
+model BarberService {
   activo              Boolean?
-  appointmentServices AppointmentService[]
+  appointmentServices AppointmentServiceLink[]
   categoria           String?
   createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
   descripcion         String?
@@ -80,23 +80,23 @@ model Service {
 }
 
 model ServiceStaffType {
-  id            String    @id @default(cuid())
-  services      Service   @relation(fields: [service_id], references: [id])
+  id            String         @id @default(cuid())
+  services      BarberService  @relation(fields: [service_id], references: [id])
   service_id    String
-  staffTypes    StaffType @relation(fields: [staff_type_id], references: [id])
+  staffTypes    StaffType      @relation(fields: [staff_type_id], references: [id])
   staff_type_id String
 
   @@map("service_staff_types")
 }
 
 model StaffServiceCustom {
-  duracionCustomMinutos Int?      @map("duracion_custom_minutos")
-  id                    String    @id @default(cuid())
-  precioCustom          Decimal?  @map("precio_custom") @db.Decimal(10, 2)
-  services              Service   @relation(fields: [service_id], references: [id])
+  duracionCustomMinutos Int?          @map("duracion_custom_minutos")
+  id                    String        @id @default(cuid())
+  precioCustom          Decimal?      @map("precio_custom") @db.Decimal(10, 2)
+  services              BarberService @relation(fields: [service_id], references: [id])
   service_id            String
-  updatedAt             DateTime? @map("updated_at") @db.Timestamp(6)
-  users                 User      @relation(fields: [staff_id], references: [id])
+  updatedAt             DateTime?     @map("updated_at") @db.Timestamp(6)
+  users                 User          @relation(fields: [staff_id], references: [id])
   staff_id              String
 
   @@map("staff_service_custom")
@@ -116,7 +116,7 @@ model Client {
 }
 
 model Appointment {
-  appointmentServices AppointmentService[]
+  appointmentServices AppointmentServiceLink[]
   clients             Client               @relation(fields: [client_id], references: [id])
   client_id           String
   createdAt           DateTime?            @map("created_at") @db.Timestamp(6)
@@ -132,18 +132,18 @@ model Appointment {
   @@map("appointments")
 }
 
-model AppointmentService {
-  appointments         Appointment @relation(fields: [appointment_id], references: [id])
+model AppointmentServiceLink {
+  appointments         Appointment    @relation(fields: [appointment_id], references: [id])
   appointment_id       String
-  duracionFinalMinutos Int?        @map("duracion_final_minutos")
+  duracionFinalMinutos Int?           @map("duracion_final_minutos")
   estado               String?
-  fechaAgregado        DateTime?   @map("fecha_agregado") @db.Timestamp(6)
-  id                   String      @id @default(cuid()) @db.Uuid
+  fechaAgregado        DateTime?      @map("fecha_agregado") @db.Timestamp(6)
+  id                   String         @id @default(cuid()) @db.Uuid
   notas                String?
-  precioFinal          Decimal?    @map("precio_final") @db.Decimal(10, 2)
-  services             Service     @relation(fields: [service_id], references: [id])
+  precioFinal          Decimal?       @map("precio_final") @db.Decimal(10, 2)
+  services             BarberService  @relation(fields: [service_id], references: [id])
   service_id           String
-  users                User?       @relation(fields: [staff_id], references: [id])
+  users                User?          @relation(fields: [staff_id], references: [id])
   staff_id             String?
 
   @@map("appointment_services")
